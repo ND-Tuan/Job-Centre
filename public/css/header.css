@@ -1,0 +1,99 @@
+/* ===== Google Font Import - Poformsins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+* {
+    font-family :-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    transition: all .3s ease;
+    /* max-width: 100%; */
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: #f0f0f0;
+}
+
+:root {
+    --blue-head: #112e51;
+    --blue: #007bff;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #0071bc;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --deep-red: #6c1313;
+    --color-text: #5b616b;
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
+/* Header */
+
+section.nav-main.flex {
+    background-color: var(--white);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.8);
+    z-index: 1000
+    
+}
+
+.header .nav-main {
+    height: 70px;
+}
+
+.header .nav-main .logo img {
+    position: absolute;
+    top: 6px;
+    height: 60px;
+    margin-left: -0.7cm;
+}
+
+.header .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 0.1rem 3rem;
+    border-bottom: 1px solid #ffffff41;
+    background-color: #DD3332;
+    position: fixed;
+    width: 100%;
+}
+.header .flex .navbar {
+    margin-left: 5cm;  
+    margin-right: auto; 
+}
+.header .flex .navbar a {
+  
+    font-size: 0.9rem;
+    color: var(--black-color);
+    padding: 1.7rem 0.5cm 1.6rem 0.5cm;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.header .flex .navbar a:hover {
+    box-shadow: 0 0 3px 0 rgba(52, 52, 52, 0.8);
+    background-color: #DD3332;
+    color: #ffffff;
+}

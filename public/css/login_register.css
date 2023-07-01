@@ -1,0 +1,235 @@
+.main-container{
+    min-height: 100vh;
+    max-width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.container{
+    position: relative;
+    top: 3cm;
+    left: 4cm;
+    width: 12cm;
+    height: 100%;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 7px;
+    border: 1px solid #bdbdbd;
+    box-shadow: 0 0 3px 0 rgba(187, 187, 187, 0.8);
+}
+
+
+
+.container .forms{
+    align-items: center;
+    transition: height 0.2s ease;
+}
+
+
+.container.active .login{
+    
+    opacity: 0;
+    transition: margin-left 0.18s ease, opacity 0.15s ease;
+}
+
+.container .signup{
+    
+    opacity: 0;
+    transition: opacity 0.09s ease;
+}
+.container.active .signup{
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.container .form .title{
+    position: relative;
+    top: -15px;
+    font-size: 25px;
+    font-weight: 600;
+    padding-left: 20px;
+}
+
+.form .input-field{
+    position: relative;
+    height: 45px;
+    width: 100%;
+    margin-top: 30px;
+
+}
+.checkPass{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.checkPass .low{
+    margin-top: 15px;
+}
+.checkPass .medium{
+    margin-top: 15px;
+}
+.checkPass .hight{
+    margin-top: 15px;
+}
+
+.input-field input{
+    position: absolute;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    padding: 0 35px;
+    outline: none;
+    font-size: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 7px;
+    transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid){
+    background-color: white;
+    border-color: #DD3332;
+    box-shadow: 0 0 3px 0 rgba(52, 52, 52, 0.8);
+}
+
+.input-field i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 23px;
+    transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) ~ i{
+    color: #DD3332;
+}
+
+.input-field i.icon{
+    left: 0;
+}
+.input-field i.showHidePw{
+    right: 0;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.form .checkbox-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.checkbox-text .checkbox-content{
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-content input{
+    margin: 0 8px -2px 4px;
+    accent-color: #DD3332;
+}
+
+.form .text{
+    color: #333;
+    font-size: 14px;
+}
+
+.form a.text{
+    color: #DD3332;
+    text-decoration: none;
+}
+.form a:hover{
+    text-decoration: underline;
+}
+
+.form .button{
+    margin-top: 35px;
+}
+
+.form .button input{
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: #646464;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button input:hover{
+    background-color: #353535;
+}
+
+.form .login-signup{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.text1 {
+    color: #000000;
+    font-size: 17px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    position: relative;
+    left: 6.3cm;
+    top: 5cm;
+}
+
+.text2 {
+    color: #ffffff;
+    background-color: #DD3332;
+    border-radius: 2px;
+    padding: 2px 4px 4px 4px;
+    font-weight: bold;
+}
+
+.text2 :hover{
+    background-color: #DD3332;
+}
+
+@media (max-width: 1024px){
+
+    .header .nav-main .nav-phone{
+        display: none;
+    }
+
+    .general .content-img {
+        max-width: 100%;
+    }
+
+    .general .content-disc {
+        margin-left: 20px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+
+    .head-text {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .header .flex .navbar{
+        display: none;
+    }
+
+    .header .nav-main .nav-phone{
+        display: none;
+    }
+
+    .content-block .content-img{
+        margin-right: 15px;
+    }
+
+    .content-block .content-disc{
+        margin-right: 0px;
+    }
+}

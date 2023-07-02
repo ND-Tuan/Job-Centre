@@ -24,3 +24,57 @@
                             </button>
                         </div>
                     </div>
+                    <?php
+                        if (isset($_SESSION['done'])){
+                            echo "<strong style='color: #ff8339;'>Cập nhập tài khoản thành công</strong>";
+                            unset($_SESSION['done']);
+                        }else if (isset($_SESSION['error'])){
+                            echo "<strong style='color: red;'>Lỗi trùng Email hoặc lỗi file</strong>";
+                            unset($_SESSION['error']);
+                        } 
+                    ?>
+                    <div class="info-container" >
+                        <h4 class="title">Thông tin cơ bản</h4>
+                        <div class="description-info">
+                            <span class="info-label"><i class="fa-solid fa-envelope fa-sm" style="margin-right:10px;"></i>Email: &nbsp;</span>
+                            <strong><?php echo $data[0]['email']?></strong><br>
+
+                            <span class="info-label"><i class="fa-solid fa-venus-mars fa-sm" style="margin-right:6px;"></i>Giới tính: &nbsp;</span>
+                            <strong><?php
+                                if ($data[0]['gender'] == 1){
+                                    echo "Nam";
+                                }else if ($data[0]['gender'] == 2){
+                                    echo "Nữ";
+                                }else if ($data[0]['gender'] == 0){
+                                    echo "Khác";
+                                }
+                            ?></strong><br>
+
+                            <span class="info-label"><i class="fa-solid fa-cake-candles fa-sm" style="margin-right:12px;"></i>Ngày sinh: &nbsp;</span>
+                            <strong><?php echo $data[0]['date-of-birth']?></strong><br>
+
+                            <span class="info-label"><i class="fa-solid fa-phone fa-sm" style="margin-right:10px;"></i>Số điện thoại: &nbsp;</span>
+                            <strong><?php
+                                if ($data[0]['phone_number'] == null){
+                                    echo "<strong>Chưa Xác định</strong>";
+                                }else{
+                                    echo $data[0]['phone_number'];
+                                }
+                            ?></strong><br>
+
+                            <span class="info-label"><i class="fa-solid fa-location-dot fa-sm" style="margin-right:14px;"></i>Địa chỉ: &nbsp;</span>
+                            <strong><?php
+                                if ($data[0]['address'] == null){
+                                    echo "<strong>Chưa Xác định</strong>";
+                                }else{
+                                    echo $data[0]['address'];
+                                }
+                            ?></strong><br>
+
+                            <span class="info-label"><i class="fa-solid fa-graduation-cap fa-sm" style="margin-right:6px;"></i>Trình độ: &nbsp;</span>
+                            <strong><?php echo $data[0]['level']?></strong><br>
+
+                            <span class="info-label"><i class="fa-solid fa-language fa-sm" style="margin-right:6px;"></i>Ngoại ngữ: &nbsp;</span>
+                            <strong><?php echo $data[0]['language_level']?></strong><br>
+                        </div>
+                    </div>

@@ -1,0 +1,312 @@
+* {
+    font-family :-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    transition: all .3s ease;
+    /* max-width: 100%; */
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: #f0f0f0;
+}
+
+.main-container{
+    width: 100%;
+}
+.main-container .row{
+    display: flex;
+    margin: 40px auto;
+    margin-bottom: 0;
+    min-height: 100vh
+}
+.main-container .row .box-config{
+    background-color: #ffffff;
+    padding: 20px;
+    width: 340px;
+    box-shadow: 0 0 3px 0 #8e8e8ecc;
+    border-radius: 5px;
+    
+}
+.main-container .row .box-info{
+    width: calc(100% - 500px);
+    padding-left: 180px;
+    padding-right: 40px;
+    min-width: 900px;
+    background-color: #f0f0f0;
+}
+.main-container .row .box-config .text-header{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.main-container .row .box-config .box-control-config{
+    margin-top: 25px;
+    display: flex;
+    font-size: 18px;
+    justify-items: center;
+    margin-bottom: 15px;
+}
+.main-container .row .box-config .box-control-config label{
+    font-size: 17px;
+}
+.main-container .row .box-config .box-control-config input{
+    width: 15px;
+    height: 15px;
+    transform: translateY(1px);
+    cursor: pointer;
+}
+.main-container .row .box-info .box-info-view{
+    width: 100%;
+    margin-bottom: 40px;
+}
+.main-container .row .box-info .name-header{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+    font-size: 26px;
+}
+
+.main-container .row .box-info #my-infor{
+    width: 100%;
+    height: 5.5cm;
+    display: flex;    
+    box-shadow: 0 0 3px 0 #8e8e8ecc;
+    border-radius: 6px;
+}
+
+.main-container .row .box-info #my-infor img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 6px 6px 0 0 ;
+}
+
+.header-container{
+    background-color: white;
+    margin-top: -10px;
+    font-weight: bold; 
+    display: grid;
+    grid-template-columns: 5.7cm auto;
+    margin-bottom: 20px;
+    box-shadow: 0 0 3px 0 #8e8e8ecc;
+    border-radius: 6px;
+    height: 3cm;
+}
+
+.header-container .change-avatar {
+    position: relative;
+    top: 13px;
+    left: 0.5cm;
+    width: 151px;
+    cursor: pointer;
+    opacity: 0;    
+}
+
+.header-container .change-avatar img{
+    width: 100%;
+    height: 100%;
+    object-position: center;
+}
+
+.header-container .change-avatar:hover {
+    opacity: 0.9;
+}
+
+.info-container{
+    background-color: white;
+    margin-top: 10px;
+    box-shadow: 0 0 3px 0 #8e8e8ecc;
+    border-radius: 6px;
+}
+
+.title{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #fff;
+    padding: 12px 16px;
+    background: linear-gradient(90deg,#ff362f,#ff8339);
+    border-radius: 6px 6px 0 0;
+}
+
+
+
+.main-container .row .box-info .avatar-preview{
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    overflow: hidden;
+    box-shadow: 0 0 3px 0 rgba(142, 142, 142, 0.8);
+    border-radius: 50% 50%;
+
+}
+.main-container .row .box-info .avatar-preview img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: #ccc;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.main-container .row .box-info .avatar-preview img#change-avatar{
+    opacity: 0;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.main-container .row .box-info .avatar-preview img#change-avatar:hover{
+    opacity: 1;
+}
+
+.main-container .row .box-info #my-infor ul{
+    margin-left: 15px;
+}
+.main-container .row .box-info #my-infor ul li, .main-container .row .box-info .description-info{
+    font-size: 18px;
+    color: var(--dark);
+    padding: 15px 30px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+
+.info-label{
+    line-height: 35px;
+    font-size: 18px;
+}
+
+.extra-container{
+    background-color: #e0e0e0;
+    border-radius: 6px;
+    width: 100%;
+    margin-bottom: 20px;
+    display: grid;
+}
+
+.extra-container .extra-content{
+    padding: 15px 30px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    box-shadow: 0 0 3px 0 #8e8e8ecc;
+}
+
+.extra-item{
+    background-color: #fff;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 70% auto;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 10px ;
+}
+
+.extra-title{
+    max-width: 97%; 
+    text-align: start;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.btn-add{
+    padding: 8px 16px 8px 12px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ff362f;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-ad{
+    padding: 8px 16px 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 650;
+    font-size: 17px;
+    line-height: 20px;
+    border: 2px solid #ec4d4d;
+    border-radius: 6px;
+    color: #DD3332;
+    background: #fff;
+    cursor: pointer;
+}
+
+.btn-add:hover{
+    background: #f76d1d;
+}
+
+.btn-ad:hover{
+    background: #f3f3f3c9;
+}
+
+.box-btn-config{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 49% 2% 49%;
+}
+
+.box-btn-config .btn{
+    width: 100%;
+    background-color:  #DD3332;
+}
+
+.box-btn-config .btn:hover{
+    background-color: var(--blue-head);
+}
+
+.extra-popup-box {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    padding-top: 90px;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    background-color: #bfbfbf96;
+}
+
+.extra-popup-box .content{
+    margin: auto;
+    box-shadow: 0 0 6px 0 rgba(61, 61, 61, 0.8);
+    width: 60%;
+    min-width: 700px;
+    background-color: #fefefe;
+    padding: 5px 20px 10px 20px;
+}
+
+.extra-popup-box .content .detail-form{
+    padding: 20px;
+    background-color: #fefefe;
+}
+
+.extra-popup-box .content .detail-form .textarea{
+    width: 100%;
+    font-size: 17px;
+    border: 1px solid #dedede;
+    padding: 10px;
+    resize: vertical;
+    min-height: 120px;
+    margin-bottom: 15px;
+}

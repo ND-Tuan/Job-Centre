@@ -221,3 +221,32 @@ html {
     background-color: #ffffff;
     position: relative;
 }
+
+.btn-add{
+    padding: 8px 16px 8px 12px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ff362f;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-ad{
+    padding: 8px 16px 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 650;
+    font-size: 17px;
+    line-height: 20px;
+    border: 2px solid #ec4d4d;
+    border-radius: 6px;
+    color: #DD3332;
+    background: #fff;
+    cursor: pointer;
+}

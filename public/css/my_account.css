@@ -250,3 +250,26 @@ html {
     background: #fff;
     cursor: pointer;
 }
+
+.btn-add:hover{
+    background: #f76d1d;
+}
+
+.btn-ad:hover{
+    background: #f3f3f3c9;
+}
+
+.box-btn-config{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 49% 2% 49%;
+}
+
+.box-btn-config .btn{
+    width: 100%;
+    background-color:  #DD3332;
+}
+
+.box-btn-config .btn:hover{
+    background-color: var(--blue-head);
+}

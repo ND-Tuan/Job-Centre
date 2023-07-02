@@ -90,3 +90,117 @@ html {
     object-position: center;
     border-radius: 6px 6px 0 0 ;
 }
+
+.header-container{
+    background-color: white;
+    margin-top: -10px;
+    font-weight: bold; 
+    display: grid;
+    grid-template-columns: 5.7cm auto;
+    margin-bottom: 20px;
+    box-shadow: 0 0 3px 0 #8e8e8ecc;
+    border-radius: 6px;
+    height: 3cm;
+}
+
+.header-container .change-avatar {
+    position: relative;
+    top: 13px;
+    left: 0.5cm;
+    width: 151px;
+    cursor: pointer;
+    opacity: 0;    
+}
+
+.header-container .change-avatar img{
+    width: 100%;
+    height: 100%;
+    object-position: center;
+}
+
+.header-container .change-avatar:hover {
+    opacity: 0.9;
+}
+
+.info-container{
+    background-color: white;
+    margin-top: 10px;
+    box-shadow: 0 0 3px 0 #8e8e8ecc;
+    border-radius: 6px;
+}
+
+.title{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #fff;
+    padding: 12px 16px;
+    background: linear-gradient(90deg,#ff362f,#ff8339);
+    border-radius: 6px 6px 0 0;
+}
+
+
+
+.main-container .row .box-info .avatar-preview{
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    overflow: hidden;
+    box-shadow: 0 0 3px 0 rgba(142, 142, 142, 0.8);
+    border-radius: 50% 50%;
+
+}
+.main-container .row .box-info .avatar-preview img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: #ccc;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.main-container .row .box-info .avatar-preview img#change-avatar{
+    opacity: 0;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.main-container .row .box-info .avatar-preview img#change-avatar:hover{
+    opacity: 1;
+}
+
+.main-container .row .box-info #my-infor ul{
+    margin-left: 15px;
+}
+.main-container .row .box-info #my-infor ul li, .main-container .row .box-info .description-info{
+    font-size: 18px;
+    color: var(--dark);
+    padding: 15px 30px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+
+.info-label{
+    line-height: 35px;
+    font-size: 18px;
+}
+
+.extra-container{
+    background-color: #e0e0e0;
+    border-radius: 6px;
+    width: 100%;
+    margin-bottom: 20px;
+    display: grid;
+}
+
+.extra-container .extra-content{
+    padding: 15px 30px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    box-shadow: 0 0 3px 0 #8e8e8ecc;
+}

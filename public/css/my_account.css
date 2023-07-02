@@ -204,3 +204,20 @@ html {
     border-radius: 6px;
     box-shadow: 0 0 3px 0 #8e8e8ecc;
 }
+
+.extra-item{
+    background-color: #fff;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 70% auto;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 10px ;
+}
+
+.extra-title{
+    max-width: 97%; 
+    text-align: start;
+    background-color: #ffffff;
+    position: relative;
+}

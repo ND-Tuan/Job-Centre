@@ -113,3 +113,37 @@
                             </div>
                         <?php }?></div>
                     </div>
+
+                    <div class="extra-container" >
+                        <div class="extra-content">
+                            <div style="max-width: 80%">
+                                <h2>Kinh nghiệm</h2>
+                                <span >Kinh nghiệm làm việc là “chìa khóa vàng” để ứng viên chinh phục nhà tuyển dụng thông qua văn bản.</span>
+                            </div>
+                            <button class="btn-ad" id="addExp">Thêm mục</button>
+                        </div>
+                        
+                        <div><?php foreach ($data[2] as $exp) { ?>
+                            <div class="extra-item" >
+                                <button class="extra-title" data-toggle="popover" data-placement="bottom" title="Mô tả" data-content="<?php echo $exp['exp-description']?>">
+                                    <strong style="font-size:19px;"><?php echo $exp['position']?></strong><br>
+                                    <span >Tại &nbsp;<strong><?php echo $exp['company-name']?></strong></span>
+                                </button>
+                                <div style="display: flex;justify-content: space-between;">
+                                    <div>
+                                        <span style="font-size:14px;">Từ: &nbsp;<strong><?php echo $exp['start_at']?></strong></span>
+                                        <?php if($exp['end_or_not'] == 0) {?>  
+                                            <br><span style="font-size:14px;">Đến: &nbsp;<strong><?php echo $exp['end_at']?></strong></span>
+                                        <?php }?>
+                                    </div>
+                                    <a 
+                                        class="btn-add" 
+                                        id="delete" onclick=" return confirm('Bạn có chắc muốn xóa nội dung này ?');" 
+                                        href="<?php echo $actual_link ?>/customer/delete_exp/<?php echo $exp['id']?>" 
+                                        style="font-size:16px;"
+                                    >Xóa</a>
+                                </div>
+                                
+                            </div>
+                        <?php }?></div>
+                    </div>

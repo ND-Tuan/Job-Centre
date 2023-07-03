@@ -78,3 +78,38 @@
                             <strong><?php echo $data[0]['language_level']?></strong><br>
                         </div>
                     </div>
+
+                    <div class="extra-container" >
+                        <div class="extra-content">
+                            <div style="max-width: 80%">
+                                <h2>Học vấn</h2>
+                                <span >Thêm học vấn giúp hiện trình độ văn hoá và trình độ chuyên môn của bạn.</span>
+                            </div>
+                            <button class="btn-ad" id="addEdu">Thêm mục</button>
+                        </div>
+                        
+                        <div><?php foreach ($data[1] as $edu) { ?>
+                            <div class="extra-item" >
+                                <button class="extra-title" data-toggle="popover" data-placement="bottom" title="Mô tả" data-content="<?php echo $edu['edu-description']?>">
+                                    <strong style="font-size:19px;"><?php echo $edu['major']?></strong><br>
+                                    <span >Tại &nbsp;<strong><?php echo $edu['school-name']?></strong></span>
+                                </button>
+                                <div style="display: flex;justify-content: space-between;">
+                                    <div>
+                                        <span style="font-size:14px;">Từ: &nbsp;<strong><?php echo $edu['start']?></strong></span>
+                                        <?php if($edu['graduatedOrNot'] == 0) {?>  
+                                            <br><span style="font-size:14px;">Đến: &nbsp;<strong><?php echo $edu['end']?></strong></span>
+                                        <?php }?>
+                                    </div>
+                                    <a 
+                                        class="btn-add" 
+                                        id="delete" 
+                                        onclick=" return confirm('Bạn có chắc muốn xóa nội dung này ?');" 
+                                        href="<?php echo $actual_link ?>/customer/delete_edu/<?php echo $edu['id']?>" 
+                                        style="font-size:16px;"
+                                    >Xóa</a>
+                                </div>
+                                
+                            </div>
+                        <?php }?></div>
+                    </div>

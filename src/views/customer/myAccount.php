@@ -147,3 +147,35 @@
                             </div>
                         <?php }?></div>
                     </div>
+
+                    <div class="extra-container" >
+                        <div class="extra-content">
+                            <div style="max-width: 80%">
+                                <h2>Kĩ năng</h2>
+                                <span >Thêm các kỹ năng bạn có giúp người khác hiểu được điểm mạnh của bạn.</span>
+                            </div>
+                            <button class="btn-ad" id="addSkill">Thêm mục</button>
+                        </div>
+
+                        <div id="skill" style=" display: grid; grid-template-columns: 50% 50%; padding: 10px;"><?php foreach ($data[3] as $skill) { ?>
+                            <div class="extra-item" style=" margin: 4px;" >
+                                <button class="extra-title" data-toggle="popover" data-placement="top" title="Mô tả" data-content=" <?php echo $skill['skill-description']?>">
+                                    <strong style="font-size:19px;"><?php echo $skill['skill']?></strong><br>
+                                    <span >Tự đánh giá: &nbsp;<?php for($i=0; $i<$skill['rate']; $i++) echo '⭐'; ?></span>
+                                </button>
+                                <div style="display: flex;justify-content: space-between;">
+                                    <div>
+                                    </div>
+                                    <a 
+                                        class="btn-add"
+                                        id="delete"
+                                        onclick=" return confirm('Bạn có chắc muốn xóa nội dung này ?');"
+                                        href="<?php echo $actual_link ?>/customer/delete_skill/<?php echo $exp['id']?>"
+                                        style="font-size:16px;"
+                                    >Xóa</a>
+                                </div>
+                            </div>
+                        <?php }?></div>
+                    </div>
+                    
+                </div>

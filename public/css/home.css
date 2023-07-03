@@ -1,3 +1,30 @@
+
+.section-header{
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Inter,sans-serif;
+    margin-top: 70px;
+    padding: 50px 140px ;
+    display: flex;
+}
+
+.section-header .section-container{
+    margin: 0px 5px;
+    padding: 50px 20px ;
+    width: 45%;
+}
+
+
+.section-header .section-container .home-search-input{
+    display: flex;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    padding: 12px;
+    width: 100%;
+    margin-bottom: 20px;
     min-width: 276px;
 }
 

@@ -327,3 +327,41 @@
         </form>
     </div>
 </div>
+
+<div class="extra-popup-box" id="skill-extra-popup">
+    <div class="content">
+        <label class="close" onclick="closePopup()" >&times;</label><br>
+        <h2>Kĩ năng</h2>
+        <form action="<?php echo $actual_link ?>/customer/add_skill" method="post"  class="detail-form">
+            <strong class="info-label">Tên kỹ năng: </strong><br>
+            <input name="skill" class="input-set-new-value" type="text" required>
+
+            <strong class="info-label">Đánh giá: </strong><br>
+            <div style="min-height: 76px;">
+                <div class="center">
+                    <div class="stars">
+                        <input type="radio" id="five" name="rate" value="5">
+                        <label for="five"></label>
+                        <input type="radio" id="four" name="rate" value="4">
+                        <label for="four"></label>
+                        <input type="radio" id="three" name="rate" value="3">
+                        <label for="three"></label>
+                        <input type="radio" id="two" name="rate" value="2">
+                        <label for="two"></label>
+                        <input type="radio" id="one" name="rate" value="1">
+                        <label for="one"></label>
+                        <span class="result"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <strong class="info-label">Mô tả chi tiết: </strong><br>
+            <textarea class="textarea" name="skill-description" placeholder="Mô tả chi tiết kỹ năng"></textarea>
+            <div class="change-avatar-detail-container">
+                <button type="submit" class="btn-add" style="width: 30%;">
+                    Cập nhật 
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

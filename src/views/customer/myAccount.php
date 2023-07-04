@@ -251,3 +251,41 @@
             </div>
         </div>
 </div>
+
+<div class="extra-popup-box" id="edu-extra-popup">
+    <div class="content">
+        <label class="close" onclick="closePopup()">&times;</label><br>
+        <h2>Kinh nghiệm</h2>
+        <form action="<?php echo $actual_link ?>/customer/add_edu" method="post"  class="detail-form">
+            <strong class="info-label">Trường học: </strong><br>
+            <input name="school" class="input-set-new-value" type="text" required>
+
+            <strong class="info-label">Chuyên ngành: </strong><br>
+            <input name="major" class="input-set-new-value" type="text" required>
+
+            <strong class="info-label">Thời gian: </strong><br>
+            <span><input class="info-label" name="graduatedOrNot" id="graduatedOrNot" value="1" type="checkbox"/>&nbsp; Tôi đang học ở đây</span><br>
+
+            <div class="box-btn-config">
+                <div>
+                    <span class="info-label">Bắt đầu: </span><br>
+                    <input class="input-set-new-value" name="eduStart" type="month" required>
+                </div>
+                <div></div>
+                <div id="eduEnd">
+                    <span class="info-label">Kết thúc: </span><br>
+                    <input class="input-set-new-value" name="eduEnd" type="month" >
+                </div>
+            </div>
+
+            <strong class="info-label">Mô tả chi tiết: </strong><br>
+            <textarea class="textarea" name="edu-description" placeholder="Mô tả chi tiết quá trình học của bạn"></textarea>
+            
+            <div class="change-avatar-detail-container">
+                <button type="submit" class="btn-add" style="width: 30%;">
+                    Cập nhật 
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

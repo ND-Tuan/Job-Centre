@@ -45,6 +45,27 @@ html {
     --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
 
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.mb-48 {
+    margin-bottom: 48px;
+}
+
+.pad-8-15 {
+    padding: 8 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+
 /* Header */
 
 section.nav-main.flex {
@@ -53,8 +74,7 @@ section.nav-main.flex {
     top: 0;
     width: 100%;
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.8);
-    z-index: 1000
-    
+    z-index: 1000 
 }
 
 .header .nav-main {
@@ -79,12 +99,13 @@ section.nav-main.flex {
     position: fixed;
     width: 100%;
 }
+
 .header .flex .navbar {
     margin-left: 5cm;  
     margin-right: auto; 
 }
-.header .flex .navbar a {
-  
+
+.header .flex .navbar a { 
     font-size: 0.9rem;
     color: var(--black-color);
     padding: 1.7rem 0.5cm 1.6rem 0.5cm;
@@ -97,3 +118,202 @@ section.nav-main.flex {
     background-color: #DD3332;
     color: #ffffff;
 }
+
+.dropdown {
+    display: inline-block;
+  }
+
+.dropdown-content {
+    position: absolute;
+    display: none;
+    right: 0px;
+    background-color: #f9f9f9;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.327);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 18px;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #dddddd;
+}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+.btn {
+    display: inline-block;
+    background-color:  white;
+    border: 2px solid rgb(221 51 50);
+    cursor: pointer;
+    height: 1.2cm;
+    color: #DD3332;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 6px 14px 0px 14px;
+    border-radius: 10px;
+}
+
+.btn2 {
+    display: inline-block;
+    background-color:  #DD3332;
+    cursor: pointer;
+    height: 1.2cm;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px 14px 0px 14px;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    background-color: #dbdbdb60;
+}
+
+.btn2:hover {
+    background-color: #bf2828;
+}
+
+.user-img img{
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 1cm;
+    width: 1cm;
+    margin-bottom: -12px;
+    margin-right: 15px;
+    object-fit: cover;
+    object-position: center;
+}
+#menu-btn {
+    display: none;
+    position: absolute;
+    right: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--white);
+    cursor: pointer;
+    line-height: 75px;
+    padding: 0 15px;
+    height: 85px;
+}
+
+#menu-btn span{
+    margin-left: 10px;
+}
+
+.btn-home{
+    margin-bottom: 20px;
+}
+
+
+  /*footer*/
+
+  .contact-box{
+    display: flex;
+    padding: 20px 90px 20px 20px;
+    width: 100%;
+    justify-content: start;
+}
+
+.contact-box .contact-item{
+    font-size: 16px;
+    line-height: 27px;
+    display: grid;
+    height: min-content;
+    margin-right: 140px;
+}
+
+.contact-box .contact-item img{
+    height: auto;
+    width: 215px;
+    margin-left: -3px;
+}
+
+.contact-box .contact-item strong{
+    font-size: 1.2em;
+    font-weight: 800;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.contact-box .contact-item span{
+    padding: 3px 0px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.contact-box .contact-item .social{
+    display: flex; 
+    margin-top: 8px;
+}
+
+.contact-box .contact-item .social .icon{
+    border-radius: 50%;
+    background-color: #ffffff;
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 740px){
+
+    .header .nav-main #menu-btn {
+        display: inline;
+        transition: .2s linear;
+        height: 75px;
+    }
+
+    .header .nav-main #menu-btn .fa-times {
+        transform: rotate(180deg);
+    }
+
+    .header .flex .navbar {
+        position: absolute;
+        top: 99%;
+        left: 0;
+        right: 0;
+        background-color: var(--white-color);
+        border-top: var(--border-color);
+        border-bottom: var(--border-color);
+        clip-path: polygon(0 0,100% 0, 100% 0, 0 0);
+        transition: .2s linear;
+    }
+
+    .header .flex .navbar.active{
+        background-color: white;
+        clip-path: polygon(0 0,100% 0, 100% 100%, 0% 100%);
+        z-index: 100;
+    }
+
+    .header .nav-main ul{
+        display: none;
+    }
+
+    .flex .navbar a{
+        display: block;
+        z-index: 1;
+    }
+
+    .header .nav-main .logo img {
+        position: absolute;
+        /* top: 8px; */
+        left: 10px;
+        height: 64px;
+    }
+}
+

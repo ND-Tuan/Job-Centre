@@ -231,3 +231,23 @@
                                 <option value="Thạc sĩ">Thạc sĩ</option>
                                 <option value="Tiến sĩ">Tiến sĩ</option>
                             </select>
+
+                            <strong  class="info-label">Ngoại ngữ </strong><br>
+                            <textarea class="box-set-new-value" name="language" placeholder="Nhập chứng chỉ ngoại ngữ của bạn (nếu có)"><?php echo $data[0]['language_level']?></textarea>
+                        
+                            <strong  class="info-label">Địa chỉ: </strong><br>
+                            <textarea class="box-set-new-value" name="address" placeholder="Nhập địa chỉ của bạn" required><?php echo $data[0]['address']?></textarea>
+                            <div class="box-btn-config">
+                                <button class="btn-ad" onclick="changeView()">
+                                    Trở lại
+                                </button>
+                                <div></div>
+                                <button type="submit" class="btn-add">
+                                    Cập nhật thông tin tài khoản
+                                </button>
+                            </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>

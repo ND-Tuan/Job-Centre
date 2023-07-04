@@ -179,3 +179,37 @@
                     </div>
                     
                 </div>
+
+                <form action="<?php echo $actual_link ?>/customer/update" method="post" id="box-edit" class="box-info-view hidden" enctype="multipart/form-data[0]">
+                    <h4 class="title">Chỉnh sửa thông tin cá nhân</h4>
+                    <div id="my-change-infor">
+                            <strong id="error-message" style="color: red; font-size: 17px"></strong><br>
+
+                            <strong class="info-label">Họ tên: &nbsp;</strong><br>
+                            <input id="name-regex" name="name" class="input-set-new-value" type="text" value="<?php echo $_SESSION['name'] ?>" required>
+                            
+                            <div class="box-btn-config">
+                                <div>
+                                    <strong class="info-label">Giới tính: </strong> <br>
+                                    <select class="input-set-new-value" name="gender" >
+                                        <?php if ($data[0]['gender'] == 2) { ?>
+                                            <option value="2">nữ</option>
+                                            <option value="1">nam</option>
+                                            <option value="0">khác</option>
+                                        <?php } elseif ($data[0]['gender'] == 1) { ?>
+                                            <option value="1">nam</option>
+                                            <option value="2">nữ</option>
+                                            <option value="0">khác</option>
+                                        <?php } else {?>
+                                            <option value="0">khác</option>
+                                            <option value="1">nam</option>
+                                            <option value="2">nữ</option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div></div>
+                                <div>
+                                    <strong class="info-label"> Ngày sinh: </strong><br>
+                                    <input class="input-set-new-value" name="date-of-birth" type="date" value="<?php echo $data[0]['date-of-birth']?>" required>
+                                </div>
+                            </div>

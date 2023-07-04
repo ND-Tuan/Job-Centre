@@ -213,3 +213,21 @@
                                     <input class="input-set-new-value" name="date-of-birth" type="date" value="<?php echo $data[0]['date-of-birth']?>" required>
                                 </div>
                             </div>
+
+                            <strong class="info-label">Email: </strong><br>
+                            <input id="email-regex" name="email" class="input-set-new-value" type="email" value="<?php echo $data[0]['email']?>" required>
+                            
+                            <strong class="info-label">Điện thoại: </strong><br>
+                            <input id="phone-regex" name="phone_number" class="input-set-new-value" type="text" value="<?php echo $data[0]['phone_number']?>" required>
+
+                            <strong class="info-label">Trình độ: </strong><br>
+                            <select class="input-set-new-value" name="level">
+                                <option value="Không có trình độ chuyên môn kỹ thuật">Không có trình độ chuyên môn kỹ thuật</option>
+                                <option value="Chứng chỉ/Chứng nhận học nghề (dưới 3 tháng)">Chứng chỉ/Chứng nhận học nghề (dưới 3 tháng)</option>
+                                <option value="Sơ cấp nghề/Chứng chỉ học nghề ngắn hạn">Sơ cấp nghề/Chứng chỉ học nghề ngắn hạn</option>
+                                <option value="Bằng nghề dài hạn/Trung cấp nghề/Trung cấp chuyên nghiệp">Bằng nghề dài hạn/Trung cấp nghề/Trung cấp chuyên nghiệp</option>
+                                <option value="Cao đẳng nghề/ Cao đẳng chuyên nghiệp">Cao đẳng nghề/ Cao đẳng chuyên nghiệp</option>
+                                <option value="Đại học">Đại học</option>
+                                <option value="Thạc sĩ">Thạc sĩ</option>
+                                <option value="Tiến sĩ">Tiến sĩ</option>
+                            </select>

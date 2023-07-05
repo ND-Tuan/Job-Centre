@@ -249,6 +249,28 @@
                     </div>
                 </form>
             </div>
+            <div>
+                <div class="box-config">
+                    <h2 class="text-header">HỒ SƠ TÀI KHOẢN</h2>
+                    <div class="box-control-config">
+                        <label class="switch">
+                            <input type="checkbox" id = "switch">
+                            <span class="slider round"></span>
+                        </label>
+                        <strong id="info" style="color: red;">Trạng thái tìm việc đang tắt</strong>
+                    </div>
+                    <div id="btnJob">
+                        <button class="btn-add" style="background-color: #2196F3; font-size: 16px; padding: 4px 16px 8px 12px;">
+                            Mong muốn việc làm
+                        </button> 
+                    </div>
+                    <p style="margin: 10px 0 40px 0;">Bật tìm việc để nhận được nhiều cơ hội việc làm tốt nhất từ JobCentre.</p>
+                    <a href="<?php echo $actual_link ?>/customer/change_password/">
+                        Thay đổi mật khẩu
+                    </a>
+                    
+                </div>
+            </div>
         </div>
 </div>
 

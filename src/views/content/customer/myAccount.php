@@ -387,3 +387,55 @@
         </form>
     </div>
 </div>
+
+
+<div class="extra-popup-box" id="job-looking-popup">
+    <div class="content">
+        <label class="close" onclick="closePopup()" >&times;</label><br>
+        <h2>Mong muốn việc làm</h2>
+        <form action="<?php echo $actual_link ?>/customer/job_looking" method="post" id="looking-form"  class="detail-form">
+            <strong class="info-label">Chọn Ngành/Nghề bạn quan tâm: </strong><br>
+            <select class="input-set-new-value"  name="career" style="font-size: 14px;">
+                <option value="<?php echo $data[0]['career']?>"><?php echo $data[0]['career']?></option>
+                <?php foreach ($data[4] as $career) { ?>
+                    <option value="<?php echo $career['career_name']?>"><?php echo $career['career_name']?></option>
+                <?php } ?>
+            </select>
+
+            <strong class="info-label">Công việc mong muốn: </strong><br>
+            <input class="input-set-new-value" value="<?php echo $data[0]['job-name']?>" name="job_name" type="text" placeholder="Nhập tên công việc" required>
+
+            <strong class="info-label">Hình thức: </strong><br>
+            <select class="input-set-new-value" name="type">
+                <option value="<?php echo $data[0]['type']?>"><?php echo $data[0]['type']?></option>
+                <option value="Toàn thời gian">Toàn thời gian</option>
+                <option value="Bán thời gian">Bán thời gian</option>
+            </select>
+
+            <strong class="info-label">Kinh nghiệm ngành/nghề đã chọn: </strong><br>
+            <select class="input-set-new-value" name="exp" >
+                <option value="<?php echo $data[0]['exp']?>"><?php echo $data[0]['exp']?></option>
+                <option value="Chưa có kinh nghiệm">Chưa có kinh nghiệm</option>
+                <option value="Dưới 1 năm">Dưới 1 năm</option>
+                <option value="1 năm">1 năm</option>
+                <option value="2 năm">2 năm</option>
+                <option value="3 năm">3 năm</option>
+                <option value="4 năm">4 năm</option>
+                <option value="5 năm">5 năm</option>
+                <option value="Trên 5 năm">Trên 5 năm</option>
+            </select>
+            
+            <strong class="info-label">Địa điểm làm việc: </strong><br>
+            <textarea class="textarea" name="job_address" placeholder="Nhập địa điểm làm việc" required><?php echo $data[0]['job-address']?></textarea>
+
+            <input class="hidden" id="check" name = "check" type="text" value= "1">
+
+            <div class="change-avatar-detail-container">
+                <button type="submit" class="btn-add" style="width: 30%;">
+                    Cập nhật 
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+

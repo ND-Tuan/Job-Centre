@@ -388,6 +388,7 @@
     </div>
 </div>
 
+
 <div class="extra-popup-box" id="job-looking-popup">
     <div class="content">
         <label class="close" onclick="closePopup()" >&times;</label><br>

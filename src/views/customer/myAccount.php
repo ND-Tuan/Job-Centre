@@ -251,3 +251,117 @@
             </div>
         </div>
 </div>
+
+<div class="extra-popup-box" id="edu-extra-popup">
+    <div class="content">
+        <label class="close" onclick="closePopup()">&times;</label><br>
+        <h2>Kinh nghiệm</h2>
+        <form action="<?php echo $actual_link ?>/customer/add_edu" method="post"  class="detail-form">
+            <strong class="info-label">Trường học: </strong><br>
+            <input name="school" class="input-set-new-value" type="text" required>
+
+            <strong class="info-label">Chuyên ngành: </strong><br>
+            <input name="major" class="input-set-new-value" type="text" required>
+
+            <strong class="info-label">Thời gian: </strong><br>
+            <span><input class="info-label" name="graduatedOrNot" id="graduatedOrNot" value="1" type="checkbox"/>&nbsp; Tôi đang học ở đây</span><br>
+
+            <div class="box-btn-config">
+                <div>
+                    <span class="info-label">Bắt đầu: </span><br>
+                    <input class="input-set-new-value" name="eduStart" type="month" required>
+                </div>
+                <div></div>
+                <div id="eduEnd">
+                    <span class="info-label">Kết thúc: </span><br>
+                    <input class="input-set-new-value" name="eduEnd" type="month" >
+                </div>
+            </div>
+
+            <strong class="info-label">Mô tả chi tiết: </strong><br>
+            <textarea class="textarea" name="edu-description" placeholder="Mô tả chi tiết quá trình học của bạn"></textarea>
+            
+            <div class="change-avatar-detail-container">
+                <button type="submit" class="btn-add" style="width: 30%;">
+                    Cập nhật 
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="extra-popup-box" id="exp-extra-popup">
+    <div class="content">
+        <label class="close" onclick="closePopup()">&times;</label><br>
+        <h2>Kinh nghiệm</h2>
+        <form action="<?php echo $actual_link ?>/customer/add_exp" method="post"  class="detail-form">
+            <strong class="info-label">Công ty: </strong><br>
+            <input name="company" class="input-set-new-value" type="text" required>
+
+            <strong class="info-label">Chức vụ: </strong><br>
+            <input name="position" class="input-set-new-value" type="text" required>
+
+            <strong class="info-label">Thời gian: </strong><br>
+            <span><input class="info-label" name="endOrNot" id="endOrNot" value="1" type="checkbox"/>&nbsp; Tôi đang làm việc ở đây</span><br>
+
+            <div class="box-btn-config">
+                <div>
+                    <span class="info-label">Bắt đầu: </span><br>
+                    <input class="input-set-new-value" name="start" type="month" required>
+                </div>
+                <div></div>
+                <div id="end">
+                    <span class="info-label">Kết thúc: </span><br>
+                    <input class="input-set-new-value" name="end" type="month" >
+                </div>
+            </div>
+
+            <strong class="info-label">Mô tả chi tiết: </strong><br>
+            <textarea class="textarea" name="exp-description" placeholder="Mô tả chi tiết công việc, những gì đạt được trong quá trình làm việc"></textarea>
+            
+            <div class="change-avatar-detail-container">
+                <button type="submit" class="btn-add" style="width: 30%;">
+                    Cập nhật 
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="extra-popup-box" id="skill-extra-popup">
+    <div class="content">
+        <label class="close" onclick="closePopup()" >&times;</label><br>
+        <h2>Kĩ năng</h2>
+        <form action="<?php echo $actual_link ?>/customer/add_skill" method="post"  class="detail-form">
+            <strong class="info-label">Tên kỹ năng: </strong><br>
+            <input name="skill" class="input-set-new-value" type="text" required>
+
+            <strong class="info-label">Đánh giá: </strong><br>
+            <div style="min-height: 76px;">
+                <div class="center">
+                    <div class="stars">
+                        <input type="radio" id="five" name="rate" value="5">
+                        <label for="five"></label>
+                        <input type="radio" id="four" name="rate" value="4">
+                        <label for="four"></label>
+                        <input type="radio" id="three" name="rate" value="3">
+                        <label for="three"></label>
+                        <input type="radio" id="two" name="rate" value="2">
+                        <label for="two"></label>
+                        <input type="radio" id="one" name="rate" value="1">
+                        <label for="one"></label>
+                        <span class="result"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <strong class="info-label">Mô tả chi tiết: </strong><br>
+            <textarea class="textarea" name="skill-description" placeholder="Mô tả chi tiết kỹ năng"></textarea>
+            <div class="change-avatar-detail-container">
+                <button type="submit" class="btn-add" style="width: 30%;">
+                    Cập nhật 
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -49,3 +49,130 @@ function isValid (string) {
 function isVietnamesePhoneNumber(number) {
     return /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/.test(number);
 }
+ //   js code to show/hide password and change icon
+    pwShowHide.forEach(eyeIcon =>{
+        eyeIcon.addEventListener("click", ()=>{
+            pwFields.forEach(pwField =>{
+                if(pwField.type ==="password"){
+                    pwField.type = "text";
+
+                    pwShowHide.forEach(icon =>{
+                        icon.classList.replace("uil-eye-slash", "uil-eye");
+                    })
+                }else{
+                    pwField.type = "password";
+
+                    pwShowHide.forEach(icon =>{
+                        icon.classList.replace("uil-eye", "uil-eye-slash");
+                        
+                    })
+                }
+            }) 
+        })
+    })
+    
+    if (Login != null){
+        Login.onsubmit = function(event){
+            if (validateEmail(email.value) == null){
+                event.preventDefault();
+                alertError.innerHTML = "Email sai định dạng";
+            }
+        }
+    }else if (Register != null){
+        Register.onsubmit = function(event){
+            alertError.innerHTML = "";
+            if (isValid(name.value) == false){
+                event.preventDefault();
+                alertError.innerHTML = "Tên sai định dạng";
+            }else if (validateEmail(email.value) == null){
+                event.preventDefault();
+                alertError.innerHTML = "Email sai định dạng";
+            } else if ((password.value).length < 8 ) {
+                event.preventDefault();
+                alertError.innerHTML = "Mật khẩu cần ít nhất 8 ký tự";
+            }else if(password.value != confirm.value){
+                event.preventDefault();
+                alertError.innerHTML = "Mật khẩu không trùng";
+            }
+        }
+    }else if (Register_hires != null) {
+        Register_hires.onsubmit = function(event){
+            alertError.innerHTML = "";
+            if (isValid(name.value) == false){
+                event.preventDefault();
+                alertError.innerHTML = "Tên sai định dạng";
+            }else if (validateEmail(email.value) == null){
+                event.preventDefault();
+                alertError.innerHTML = "Email sai định dạng";
+            }else if (!isVietnamesePhoneNumber(phone.value)){
+                event.preventDefault();
+                alertError.innerHTML = "Số điện thoại sai định dạng";
+            }
+        }
+    }
+
+    // check độ mạnh yếu của mật khẩu
+
+    low.style.display = "none";
+    medium.style.display = "none";
+    hight.style.display = "none";
+
+    password.addEventListener('keyup', function(){
+
+        if ((password.value).length >= 8 && (password.value).length != 0) {
+            if (isLongerThan8) strength ++;
+            isLongerThan8 = false;
+        } else {
+            if(!isLongerThan8) strength --;
+            isLongerThan8 = true;
+        }
+
+        if ((password.value).match(/[a-z]/) && (password.value).match(/[A-Z]/)) {
+            if(isMixedCase) strength += 1;
+            isMixedCase=false;
+        } else {
+            if(!isMixedCase) strength --;
+            isMixedCase=true;
+        }
+
+        if ((password.value).match(/\d/)) {
+            if(doesHaveNumbers) strength += 1;
+            doesHaveNumbers=false;
+        } else {
+            if(!doesHaveNumbers) strength --;
+            doesHaveNumbers=true;
+        }
+
+        if ((password.value).match(/[^a-zA-Z\d]/)) {
+            if(doesHaveSpecialCharacters) strength += 1;
+            doesHaveSpecialCharacters=false;
+        } else {
+            if(!doesHaveSpecialCharacters) strength --;
+            doesHaveSpecialCharacters=true;
+        }
+
+        
+        if (isLongerThan8) {
+            low.style.display = "none";
+            medium.style.display = "none";
+            hight.style.display = "none";
+            document.getElementById('result').innerHTML = "Quá ngắn";
+
+        } else if (strength < 3 ) {
+            low.style.display = "block";
+            medium.style.display = "none";
+            hight.style.display = "none";
+            document.getElementById('result').innerHTML = "Yếu";
+
+        } else if (strength === 3) {
+            low.style.display = "block";
+            medium.style.display = "block";
+            hight.style.display = "none";
+            document.getElementById('result').innerHTML = "Trung bình";
+        } else if (strength ===4) {
+            low.style.display = "block";
+            medium.style.display = "block";
+            hight.style.display = "block";
+            document.getElementById('result').innerHTML = "Mạnh";
+        }
+    });

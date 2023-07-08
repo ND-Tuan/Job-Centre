@@ -249,28 +249,6 @@
                     </div>
                 </form>
             </div>
-            <div>
-                <div class="box-config">
-                    <h2 class="text-header">HỒ SƠ TÀI KHOẢN</h2>
-                    <div class="box-control-config">
-                        <label class="switch">
-                            <input type="checkbox" id = "switch">
-                            <span class="slider round"></span>
-                        </label>
-                        <strong id="info" style="color: red;">Trạng thái tìm việc đang tắt</strong>
-                    </div>
-                    <div id="btnJob">
-                        <button class="btn-add" style="background-color: #2196F3; font-size: 16px; padding: 4px 16px 8px 12px;">
-                            Mong muốn việc làm
-                        </button> 
-                    </div>
-                    <p style="margin: 10px 0 40px 0;">Bật tìm việc để nhận được nhiều cơ hội việc làm tốt nhất từ JobCentre.</p>
-                    <a href="<?php echo $actual_link ?>/customer/change_password/">
-                        Thay đổi mật khẩu
-                    </a>
-                    
-                </div>
-            </div>
         </div>
 </div>
 
@@ -388,7 +366,6 @@
     </div>
 </div>
 
-<<<<<<< HEAD:src/views/customer/myAccount.php
 <div id="popup" class="change-avatar-box">
     <div class="change-avatar-box-content">
         <label class="close" id="change-avatar-box-close">&times;</label>
@@ -410,56 +387,3 @@
         </form>
     </div>
 </div>
-=======
-
-<div class="extra-popup-box" id="job-looking-popup">
-    <div class="content">
-        <label class="close" onclick="closePopup()" >&times;</label><br>
-        <h2>Mong muốn việc làm</h2>
-        <form action="<?php echo $actual_link ?>/customer/job_looking" method="post" id="looking-form"  class="detail-form">
-            <strong class="info-label">Chọn Ngành/Nghề bạn quan tâm: </strong><br>
-            <select class="input-set-new-value"  name="career" style="font-size: 14px;">
-                <option value="<?php echo $data[0]['career']?>"><?php echo $data[0]['career']?></option>
-                <?php foreach ($data[4] as $career) { ?>
-                    <option value="<?php echo $career['career_name']?>"><?php echo $career['career_name']?></option>
-                <?php } ?>
-            </select>
-
-            <strong class="info-label">Công việc mong muốn: </strong><br>
-            <input class="input-set-new-value" value="<?php echo $data[0]['job-name']?>" name="job_name" type="text" placeholder="Nhập tên công việc" required>
-
-            <strong class="info-label">Hình thức: </strong><br>
-            <select class="input-set-new-value" name="type">
-                <option value="<?php echo $data[0]['type']?>"><?php echo $data[0]['type']?></option>
-                <option value="Toàn thời gian">Toàn thời gian</option>
-                <option value="Bán thời gian">Bán thời gian</option>
-            </select>
-
-            <strong class="info-label">Kinh nghiệm ngành/nghề đã chọn: </strong><br>
-            <select class="input-set-new-value" name="exp" >
-                <option value="<?php echo $data[0]['exp']?>"><?php echo $data[0]['exp']?></option>
-                <option value="Chưa có kinh nghiệm">Chưa có kinh nghiệm</option>
-                <option value="Dưới 1 năm">Dưới 1 năm</option>
-                <option value="1 năm">1 năm</option>
-                <option value="2 năm">2 năm</option>
-                <option value="3 năm">3 năm</option>
-                <option value="4 năm">4 năm</option>
-                <option value="5 năm">5 năm</option>
-                <option value="Trên 5 năm">Trên 5 năm</option>
-            </select>
-            
-            <strong class="info-label">Địa điểm làm việc: </strong><br>
-            <textarea class="textarea" name="job_address" placeholder="Nhập địa điểm làm việc" required><?php echo $data[0]['job-address']?></textarea>
-
-            <input class="hidden" id="check" name = "check" type="text" value= "1">
-
-            <div class="change-avatar-detail-container">
-                <button type="submit" class="btn-add" style="width: 30%;">
-                    Cập nhật 
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-
->>>>>>> 7c985c87f91cd0dd4ad35c6a0b702b2618f0e248:src/views/content/customer/myAccount.php

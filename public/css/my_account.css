@@ -569,3 +569,41 @@ h3 {
     -ms-transform: translateX(19px);
     transform: translateX(19px);
   }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 27px;
+      }
+    
+      .slider.round:before {
+        border-radius: 50%;
+      }
+    
+    /* end change info */
+    
+    /* End content */
+    
+    /* pc */
+    @media (max-width: 1024px){
+        .main-container .row .box-config {
+            width: 380px;
+        }
+    }
+    /* pc */
+    
+    /* Tablet */
+    @media (min-width: 740px) and (max-width: 1170px) {
+        .main-container .row{
+            display: block;
+            padding: 0px 30px;
+        }
+        .main-container .row .box-config{
+            width: 100%;
+        }
+        .main-container .row .box-info{
+            width: 100%;
+            padding: 0px;
+            margin-top: 50px;
+        }
+    }
+    /* Tablet */

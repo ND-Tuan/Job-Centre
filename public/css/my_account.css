@@ -417,3 +417,21 @@ h3 {
     padding: 10px 20px;
     background-color: rgb(101, 101, 255);
 }
+
+.info-header{
+    padding: 18px 0px;
+    line-height: 30px;
+}
+
+.info-text{
+    line-height: 25px;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: italic;
+    margin-left: 10px;
+}
+
+.hidden{
+    display: none;
+    
+}

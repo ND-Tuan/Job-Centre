@@ -606,4 +606,55 @@ h3 {
             margin-top: 50px;
         }
     }
-    /* Tablet */
+/* Tablet */
+
+/* Mobile */
+@media (max-width: 740px){
+    .main-container .row{
+        display: block;
+        padding: 0px 30px;
+    }
+    .main-container .row .box-config{
+        width: 100%;
+    }
+    .main-container .row .box-info{
+        width: 100%;
+        padding: 0px;
+        margin-top: 50px;
+    }
+    .main-container .row .box-info #my-infor {
+        display: block;
+    }
+    .main-container .row .box-info #my-infor ul{
+        margin-left: 0;
+    }
+    .box-btn-config .btn{
+        font-size: 17px;
+    }
+    #my-change-infor ul li span{
+        width: 100%;
+    }
+    .input-set-new-value{
+        width: 100%;
+    }
+    .box-set-new-value{
+        width: 100%;
+        margin: 0;
+        transform: none;
+    }
+}
+/* Mobile */
+@media (max-width: 1024px){
+
+    .header .nav-main .nav-phone{
+        display: none;
+    }
+
+    .general .content-img {
+        max-width: 100%;
+    }
+
+    .general .content-disc {
+        margin-left: 20px;
+    }
+}

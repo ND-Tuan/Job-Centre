@@ -435,3 +435,38 @@ h3 {
     display: none;
     
 }
+
+/* .main-container .row .box-info */
+
+/* start change ìnfo */
+#my-change-infor{
+    padding: 5px 20px;
+    background-color: #f6f6f6;
+    padding-bottom: 20px;
+}
+.input-set-new-value{
+    width: 100%;
+    border: 1px solid #ccc;
+    font-size: 17px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+}
+#my-change-infor ul li{
+    margin-top: 10px;
+}
+#my-change-infor ul li span{
+    width: 100px;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.box-set-new-value{
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+    font-size: 17px;
+    resize: vertical;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    min-height: 70px;
+}

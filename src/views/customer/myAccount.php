@@ -387,3 +387,40 @@
         </form>
     </div>
 </div>
+
+<script src="<?php echo $actual_link ?>/public/javascript/myAccount.js"></script>
+<script src="<?php echo $actual_link ?>/public/javascript/myCompany.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+    document.querySelectorAll("textarea").forEach(element => {
+        function autoResize(el) {
+        el.style.height = el.scrollHeight + 'px';
+        }
+        autoResize(element);
+        element.addEventListener('input', () => autoResize(element));
+    });
+
+    $(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+    });
+
+    document.querySelectorAll('#skill').forEach(element =>{
+        if(element.offsetHeight <= 20){
+            element.style.display = "none";
+        }
+    })
+
+    var IsCheck = <?php echo json_encode($data[0]['job-looking']); ?>;
+    if(IsCheck ==1){
+        document.getElementById("switch").checked = true;
+        document.getElementById('info').style.color = "#2196F3";
+        document.getElementById('btnJob').style.display = "block"
+        document.getElementById('info').innerHTML = "Trạng thái tìm việc đã bật";
+    } else {
+        document.getElementById("switch").checked = false;
+        document.getElementById('info').style.color = "red";
+        document.getElementById('btnJob').style.display = "none"
+        document.getElementById('info').innerHTML = "Trạng thái tìm việc đang tắt";
+    }
+</script>

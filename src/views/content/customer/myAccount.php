@@ -388,6 +388,7 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD:src/views/customer/myAccount.php
 <div id="popup" class="change-avatar-box">
     <div class="change-avatar-box-content">
@@ -411,6 +412,8 @@
     </div>
 </div>
 =======
+=======
+>>>>>>> 7c985c87f91cd0dd4ad35c6a0b702b2618f0e248
 
 <div class="extra-popup-box" id="job-looking-popup">
     <div class="content">
@@ -462,4 +465,7 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 >>>>>>> 7c985c87f91cd0dd4ad35c6a0b702b2618f0e248:src/views/content/customer/myAccount.php
+=======
+>>>>>>> 7c985c87f91cd0dd4ad35c6a0b702b2618f0e248

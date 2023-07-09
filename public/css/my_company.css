@@ -56,3 +56,113 @@
     padding-top: 3px;
     line-height: 29px;
 }
+
+.avatar{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 5px solid #ffffff;
+}
+
+.avatar img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: #ccc;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.avatar img#change-avatar{
+    opacity: 0;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.avatar img#change-avatar:hover{
+    opacity: 1;
+}
+
+.box-info{
+    display: grid;
+    grid-template-columns: 65% 2% 33%; 
+    margin-top: 9px;
+    width: 100%;
+}
+
+.container2{
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 3px 0 rgba(128, 128, 128, 0.8);
+    margin-bottom: 15px;
+}
+
+.title{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #fff;
+    padding: 12px 16px;
+    background: #DD3332;
+    border-radius: 10px 10px 0 0;
+}
+
+.btn-recruitment{
+    padding: 8px 16px 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #DD3332;
+    border-radius: 6px;
+    color: #fff;
+    width: 84%;
+    min-width: 200px;
+    margin-left: 5px;
+    margin-top: 20px;
+}
+
+.btn-edit{
+    padding: 8px 16px 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    border: 1px solid #ec4d4d;
+    border-radius: 6px;
+    color: #DD3332;
+    background: #fff;
+    width: 84%;
+    min-width: 200px;
+    margin-left: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.btn-upload-avatar {
+    background: rgba(0,0,0,.412);
+    height: 80px;
+    opacity: 0;
+    padding-top: 10px;
+    position: absolute;
+    text-align: center;
+    top: 51%;
+    transition: all .4s ease;
+    width: 100%;
+    z-index: 100;
+}
+
+[role=button] {
+    cursor: pointer;
+}
+
+.btn-upload-avatar:hover {
+    z-index: 100;
+}

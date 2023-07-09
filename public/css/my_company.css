@@ -166,3 +166,68 @@
 .btn-upload-avatar:hover {
     z-index: 100;
 }
+
+.container3{
+    background-color: #fefefe;
+    border-radius: 10px;
+    margin-top: 9px;
+    width: 100%;
+}
+
+.container3 .form{
+    padding: 20px 30px;  
+    border-radius:0 0 10px 10px;
+    box-shadow: 0 0 3px 0 rgba(128, 128, 128, 0.8);
+}
+
+.container3 .btn-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.submit-btn{
+    padding: 8px 16px 8px 12px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #DD3332;
+    border-radius: 6px;
+    color: #fff;
+    width: 50%;
+}
+
+.input-title{
+    font-size: 16px;
+    color: #000000;
+    font-weight: bold;
+    padding: 5px 0px;
+}
+
+.select-input{
+    display: block;
+    width: 100%;
+    border: 1px solid #dbdbdb;
+    font-size: 17px;
+    padding: 8px 10px;
+}
+
+.text-input{
+    width: 100%;
+    font-size: 17px;
+    border: 1px solid #dedede;
+    padding: 10px;
+    resize: vertical;
+    height: 120px;
+}
+
+.container4{
+    align-items: center;
+    display: flex; 
+    flex-direction: column;
+    margin: auto;
+}

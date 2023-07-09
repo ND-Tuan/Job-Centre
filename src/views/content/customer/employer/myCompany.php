@@ -83,3 +83,37 @@
         </div>
     </div>
 </div>
+
+<div id="popup" class="change-avatar-box">
+    <div class="change-avatar-box-content">
+        <label class="close" id="change-avatar-box-close">&times;</label>
+        <h3>Thay ảnh đại diện</h3>
+        <form action="<?php echo $actual_link ?>/employer/updateAvatar" method="post"  class="change-avatar-container" enctype="multipart/form-data"> 
+            <div class="change-avatar-detail-container">
+                <h4 style="padding-bottom:10px">Ảnh đại diện hiển thị</h4>
+                <div class="preview">    
+                    <img
+                    id="img-preview"
+                    src="<?php echo $actual_link ?>/public/images/avatar/<?php echo $_SESSION['avatar']?>">
+                    <input accept="image/*" type="file" id="file-input"  name="avatar" >
+                </div>
+            </div>
+            <div class="change-avatar-detail-container">
+                <label for="file-input">Đổi ảnh</label>
+                <button type="submit" class="btn1">Cập nhật</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="<?php echo $actual_link ?>/public/javascript/myAccount.js"></script>
+<script src="<?php echo $actual_link ?>/public/javascript/myCompany.js"></script>
+<script>
+  document.querySelectorAll("#info").forEach(element => {
+    function autoResize(el) {
+      el.style.height = el.scrollHeight + 'px';
+    }
+    autoResize(element);
+    element.addEventListener('input', () => autoResize(element));
+  });
+</script>

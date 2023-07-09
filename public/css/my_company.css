@@ -1,0 +1,366 @@
+.main-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    min-height: 100vh
+    
+}
+
+.content{
+    width: 68%;
+    min-width: 800px;
+}
+
+.container{
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 3px 0 rgba(128, 128, 128, 0.8);
+    margin-bottom: 9px;
+}
+
+.container .background{
+    width: 100%;
+    height: 5cm;
+    display: flex;
+    
+}
+
+.container .background img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.container .title-box{
+    display: grid;
+    grid-template-columns: 19% 60% 21%;
+    padding-bottom: 20px;
+    height: 3.2cm;
+}
+
+.conpany-title{
+    color: #000000;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 20px;
+    padding-top: 10px;
+    line-height: 30px;
+}
+
+.conpany-email{
+    color: #3e3e3e;
+    font-size: 18px;
+    font-weight: 550;
+    padding-top: 3px;
+    line-height: 29px;
+}
+
+.avatar{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 5px solid #ffffff;
+}
+
+.avatar img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: #ccc;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.avatar img#change-avatar{
+    opacity: 0;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.avatar img#change-avatar:hover{
+    opacity: 1;
+}
+
+.box-info{
+    display: grid;
+    grid-template-columns: 65% 2% 33%; 
+    margin-top: 9px;
+    width: 100%;
+}
+
+.container2{
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 3px 0 rgba(128, 128, 128, 0.8);
+    margin-bottom: 15px;
+}
+
+.title{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #fff;
+    padding: 12px 16px;
+    background: #DD3332;
+    border-radius: 10px 10px 0 0;
+}
+
+.btn-recruitment{
+    padding: 8px 16px 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #DD3332;
+    border-radius: 6px;
+    color: #fff;
+    width: 84%;
+    min-width: 200px;
+    margin-left: 5px;
+    margin-top: 20px;
+}
+
+.btn-edit{
+    padding: 8px 16px 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    border: 1px solid #ec4d4d;
+    border-radius: 6px;
+    color: #DD3332;
+    background: #fff;
+    width: 84%;
+    min-width: 200px;
+    margin-left: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.btn-upload-avatar {
+    background: rgba(0,0,0,.412);
+    height: 80px;
+    opacity: 0;
+    padding-top: 10px;
+    position: absolute;
+    text-align: center;
+    top: 51%;
+    transition: all .4s ease;
+    width: 100%;
+    z-index: 100;
+}
+
+[role=button] {
+    cursor: pointer;
+}
+
+.btn-upload-avatar:hover {
+    z-index: 100;
+}
+
+.container3{
+    background-color: #fefefe;
+    border-radius: 10px;
+    margin-top: 9px;
+    width: 100%;
+}
+
+.container3 .form{
+    padding: 20px 30px;  
+    border-radius:0 0 10px 10px;
+    box-shadow: 0 0 3px 0 rgba(128, 128, 128, 0.8);
+}
+
+.container3 .btn-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.submit-btn{
+    padding: 8px 16px 8px 12px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #DD3332;
+    border-radius: 6px;
+    color: #fff;
+    width: 50%;
+}
+
+.input-title{
+    font-size: 16px;
+    color: #000000;
+    font-weight: bold;
+    padding: 5px 0px;
+}
+
+.select-input{
+    display: block;
+    width: 100%;
+    border: 1px solid #dbdbdb;
+    font-size: 17px;
+    padding: 8px 10px;
+}
+
+.text-input{
+    width: 100%;
+    font-size: 17px;
+    border: 1px solid #dedede;
+    padding: 10px;
+    resize: vertical;
+    height: 120px;
+}
+
+.container4{
+    align-items: center;
+    display: flex; 
+    flex-direction: column;
+    margin: auto;
+}
+
+.change-avatar-box {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    padding-top: 150px;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.change-avatar-box-content {
+    background-color: #fefefe;
+    margin: auto;
+    box-shadow: 0 0 6px 0 rgba(61, 61, 61, 0.8);
+    width: 30%;
+   
+} 
+
+.close {
+    background-color: #e6e6e6;
+    color: #858585;
+    padding: 2px;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 0;
+}
+  
+.close:hover, .close:focus {
+    color: #ce0101;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h3 {
+    width: 100%;
+    padding: 10px;
+    background-color: #DD3332;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+#file-input {
+    display: none;
+}
+  
+.preview {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    box-shadow: 0 0 3px 0 rgba(142, 142, 142, 0.305);
+    overflow: hidden;
+    margin: auto;
+    border-radius: 50% 50%;
+    display: flex; 
+    flex-direction: column;
+}
+  
+  .preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .btn1 {
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: rgb(101, 101, 255);
+    margin-top: 15px;
+  }
+
+  label {
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: rgb(101, 101, 255);
+  }
+
+  .textarea-info{
+    background: #cbcbcb00;
+    height: 100%;
+    width: 100%;
+    resize: none;
+    padding: 15px 20px 20px 20px;
+    line-height: 30px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.hidden{
+    display: none;
+}
+
+.recruitment-container{
+    display: grid; 
+    grid-template-columns: 80% 20%;  
+    align-items: stretch;
+    background-color: #f2f2f2;
+    border-radius: 6px;
+    margin-top: 15px;
+    padding: 10px;
+    box-shadow: 0 0 3px 0 #80808083;
+}
+
+.more-info{
+    display: inline-block;
+    font-size: 15px;
+    color: #000000;
+    background-color: #e9d9d9ec;
+    border-radius: 2px;
+    padding: 2px 6px 4px 6px;
+    margin-top: 5px;
+    font-weight: 550;
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+    max-width: 60%;
+    overflow: hidden;
+}

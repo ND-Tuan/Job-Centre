@@ -115,4 +115,26 @@ class customer extends Controllers{
         $model ->deleteExp($route[0]);
         header("Location: $actual_link/customer/my_account#addExp");
     }
+
+    //thêm kĩ năng
+    public function add_skill(){  
+        // Nhận dữ liệu gửi lên
+        $skill           = addslashes($_POST['skill']);
+        $rate          = addslashes($_POST['rate']);
+        $skill_description   = addslashes($_POST['skill-description']);
+
+        $save = $this->model("customerModels");
+        $actual_link = $this->getUrl();
+        // Lưu giá trị
+        $save->updateSkill($_SESSION['id'], $skill, $rate, $skill_description);
+        header("Location: $actual_link/customer/my_account#addSkill");
+    }
+
+    //xóa kĩ năng
+    public function delete_skill($route = []){
+        $actual_link = $this->getUrl();
+        $model = $this->model("customerModels");
+        $model ->deleteSkill($route[0]);
+        header("Location: $actual_link/customer/my_account#addSkill");
+    }
 }

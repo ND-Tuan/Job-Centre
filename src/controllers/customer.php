@@ -67,5 +67,52 @@ class customer extends Controllers{
         header("Location: $actual_link/customer/my_account");
     }
 
+    public function add_edu(){  
+        // Nhận dữ liệu gửi lên
+        $school           = addslashes($_POST['school']);
+        $major          = addslashes($_POST['major']);
+        $graduatedOrNot          = addslashes($_POST['graduatedOrNot']);
+        $eduStart             = addslashes($_POST['eduStart']);
+        $eduEnd               = addslashes($_POST['eduEnd']);
+        $edu_description   = addslashes($_POST['edu-description']);
 
+        $save = $this->model("customerModels");
+        $actual_link = $this->getUrl();
+        // Lưu giá trị
+        $save->updateEdu($_SESSION['id'], $school, $major, $graduatedOrNot, $eduStart, $eduEnd, $edu_description);
+        header("Location: $actual_link/customer/my_account#addExp");
+    }
+
+    //xóa học vấn
+    public function delete_edu($route = []){
+        $actual_link = $this->getUrl();
+        $model = $this->model("customerModels");
+        $model ->deleteEdu($route[0]);
+        header("Location: $actual_link/customer/my_account#addEdu");
+    }
+
+    //thêm kinh nghiệm
+    public function add_exp(){  
+        // Nhận dữ liệu gửi lên
+        $company           = addslashes($_POST['company']);
+        $position          = addslashes($_POST['position']);
+        $endOrNot          = addslashes($_POST['endOrNot']);
+        $start             = addslashes($_POST['start']);
+        $end               = addslashes($_POST['end']);
+        $exp_description   = addslashes($_POST['exp-description']);
+
+        $save = $this->model("customerModels");
+        $actual_link = $this->getUrl();
+        // Lưu giá trị
+        $save->updateExp($_SESSION['id'], $company, $position, $endOrNot, $start, $end, $exp_description);
+        header("Location: $actual_link/customer/my_account#addExp");
+    }
+
+    //xóa kinh nghiệm
+    public function delete_exp($route = []){
+        $actual_link = $this->getUrl();
+        $model = $this->model("customerModels");
+        $model ->deleteExp($route[0]);
+        header("Location: $actual_link/customer/my_account#addExp");
+    }
 }

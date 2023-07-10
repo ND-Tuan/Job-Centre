@@ -388,33 +388,6 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD:src/views/customer/myAccount.php
-<div id="popup" class="change-avatar-box">
-    <div class="change-avatar-box-content">
-        <label class="close" id="change-avatar-box-close">&times;</label>
-        <h3>Thay ảnh đại diện</h3>
-        <form action="<?php echo $actual_link ?>/customer/updateAvatar" method="post"  class="change-avatar-container" enctype="multipart/form-data"> 
-            <div class="change-avatar-detail-container">
-                <h4 style="padding-bottom:10px">Ảnh đại diện hiển thị</h4>
-                <div class="preview">    
-                    <img
-                    id="img-preview"
-                    src="<?php echo $actual_link ?>/public/images/avatar/<?php echo $_SESSION['avatar']?>">
-                    <input accept="image/*" type="file" id="file-input"  name="avatar" >
-                </div>
-            </div>
-            <div class="change-avatar-detail-container">
-                <label for="file-input">Đổi ảnh</label>
-                <button type="submit" class="btn1">Cập nhật</button>
-            </div>
-        </form>
-    </div>
-</div>
-=======
-=======
->>>>>>> 7c985c87f91cd0dd4ad35c6a0b702b2618f0e248
-
 <div class="extra-popup-box" id="job-looking-popup">
     <div class="content">
         <label class="close" onclick="closePopup()" >&times;</label><br>
@@ -465,7 +438,61 @@
     </div>
 </div>
 
-<<<<<<< HEAD
->>>>>>> 7c985c87f91cd0dd4ad35c6a0b702b2618f0e248:src/views/content/customer/myAccount.php
-=======
->>>>>>> 7c985c87f91cd0dd4ad35c6a0b702b2618f0e248
+<div id="popup" class="change-avatar-box">
+    <div class="change-avatar-box-content">
+        <label class="close" id="change-avatar-box-close">&times;</label>
+        <h3>Thay ảnh đại diện</h3>
+        <form action="<?php echo $actual_link ?>/customer/updateAvatar" method="post"  class="change-avatar-container" enctype="multipart/form-data"> 
+            <div class="change-avatar-detail-container">
+                <h4 style="padding-bottom:10px">Ảnh đại diện hiển thị</h4>
+                <div class="preview">    
+                    <img
+                    id="img-preview"
+                    src="<?php echo $actual_link ?>/public/images/avatar/<?php echo $_SESSION['avatar']?>">
+                    <input accept="image/*" type="file" id="file-input"  name="avatar" >
+                </div>
+            </div>
+            <div class="change-avatar-detail-container">
+                <label for="file-input">Đổi ảnh</label>
+                <button type="submit" class="btn1">Cập nhật</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="<?php echo $actual_link ?>/public/javascript/myAccount.js"></script>
+<script src="<?php echo $actual_link ?>/public/javascript/myCompany.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+    document.querySelectorAll("textarea").forEach(element => {
+        function autoResize(el) {
+        el.style.height = el.scrollHeight + 'px';
+        }
+        autoResize(element);
+        element.addEventListener('input', () => autoResize(element));
+    });
+
+    $(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+    });
+
+    document.querySelectorAll('#skill').forEach(element =>{
+        if(element.offsetHeight <= 20){
+            element.style.display = "none";
+        }
+    })
+
+    var IsCheck = <?php echo json_encode($data[0]['job-looking']); ?>;
+    if(IsCheck ==1){
+        document.getElementById("switch").checked = true;
+        document.getElementById('info').style.color = "#2196F3";
+        document.getElementById('btnJob').style.display = "block"
+        document.getElementById('info').innerHTML = "Trạng thái tìm việc đã bật";
+    } else {
+        document.getElementById("switch").checked = false;
+        document.getElementById('info').style.color = "red";
+        document.getElementById('btnJob').style.display = "none"
+        document.getElementById('info').innerHTML = "Trạng thái tìm việc đang tắt";
+    }
+</script>

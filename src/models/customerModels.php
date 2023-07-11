@@ -188,4 +188,130 @@ class customerModels extends ConnectDB{
         $sql = "DELETE FROM `customer-education` WHERE `id` = '$id'";
         mysqli_query($this->connection,$sql);
     }
+
+    function selectExp($id){
+        $sql = "SELECT * FROM `customer-exp` WHERE `custumer_id` = '$id'";
+        $exp = mysqli_query($this->connection,$sql);
+        return $exp;
+    }
+
+    //thêm kinh nghiệm
+    function updateExp($id, $company, $position, $endOrNot, $start, $end, $exp_description){
+        // Câu truy vấn
+        $sql = "INSERT INTO `customer-exp`(
+                    `custumer_id`, 
+                    `company-name`, 
+                    `position`, 
+                    `end_or_not`, 
+                    `start_at`, 
+                    `end_at`, 
+                    `exp-description`
+                ) 
+                VALUES (
+                    '$id',
+                    '$company',
+                    '$position',
+                    '$endOrNot',
+                    '$start',
+                    '$end',
+                    '$exp_description'
+                )";
+        // Thực hiện truy vẫn
+        mysqli_query($this->connection,$sql);
+        // Kiểm tra xem có lỗi xảy ra không
+        if (mysqli_error($this->connection) == ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //xóa kinh nghiệm
+    function deleteExp($id){
+        $sql = "DELETE FROM `customer-exp` WHERE `id` = '$id'";
+        mysqli_query($this->connection,$sql);
+    }
+
+    function selectSkill($id){
+        $sql = "SELECT * FROM `customer-skill` WHERE `customer_id` = '$id'";
+        $skill = mysqli_query($this->connection,$sql);
+        return $skill;
+    }
+
+    //thêm kĩ năng
+    function updateSkill($id, $skill, $rate, $skill_description){
+        // Câu truy vấn
+        $sql = "INSERT INTO `customer-skill`(
+                    `customer_id`, 
+                    `skill`, 
+                    `rate`, 
+                    `skill-description`
+                )
+                VALUES (
+                    '$id',
+                    '$skill',
+                    '$rate',
+                    '$skill_description'
+                )";
+        // Thực hiện truy vẫn
+        mysqli_query($this->connection,$sql);
+        // Kiểm tra xem có lỗi xảy ra không
+        if (mysqli_error($this->connection) == ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //xóa kĩ năng
+    function deleteSkill($id){
+        $sql = "DELETE FROM `customer-skill` WHERE `id` = '$id'";
+        mysqli_query($this->connection,$sql);
+    }
+
+
+    function job_looking($id, $career, $job_name, $exp, $job_address, $check, $type){
+        // Câu truy vấn
+        $sql = "UPDATE 
+                    `customer` 
+                SET 
+                    `job-looking` = '$check',
+                    `career` = '$career',
+                    `job-name` = '$job_name',
+                    `exp` = '$exp',
+                    `job-address` = '$job_address',
+                    `type` = '$type',
+                    `turnOnAt` = CURRENT_TIMESTAMP()
+                WHERE 
+                    `id` = '$id'";
+        // Thực hiện truy vẫn
+        mysqli_query($this->connection,$sql);
+        // Kiểm tra xem có lỗi xảy ra không
+        if (mysqli_error($this->connection) == ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function find( $job_name, $career, $type, $gender, $exp, $address){
+
+        $job_query      = "";
+        $address_query  = "";
+        $career_query   = "";
+        $type_query     = "";
+        $gender_query   = "";
+        $exp_query      = "";
+
+        if($job_name != null)   $job_query      = " AND `customer`.`job-name` like '%$job_name%'";
+        if($address != null)    $address_query  = " AND `customer`.`job-address` like '%$address%'";
+        if($career != null)     $career_query   = " AND `customer`.`career` = '$career'";
+        if($type != null)       $type_query     = " AND `customer`.`type` = '$type'";
+        if($exp != null)        $exp_query      = " AND `customer`.`exp` = '$exp'";
+        if($gender != null)     $gender_query   = " AND `customer`.`gender` = '$gender'";
+        $sql = "SELECT * FROM `customer` WHERE `job-looking` = 1".$gender_query .$job_query .$address_query .$career_query .$type_query .$exp_query;
+        
+        $cv= mysqli_query($this->connection,$sql);
+        return $cv;
+    }
 }

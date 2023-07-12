@@ -1,27 +1,5 @@
 <?php 
 class userModels extends ConnectDB{
-    // Tạo dữ liệu mới
-    function CreateUser($name,$email,$password){
-        // Câu truy vấn
-        $sql = "INSERT INTO `user`(
-                    `name`,
-                    `email`,
-                    `password`
-                )
-                VALUES(
-                    '$name',
-                    '$email',
-                    '$password'
-                )";
-        // Thực hiện truy vẫn
-        mysqli_query($this->connection,$sql);
-        // Kiểm tra xem có lỗi xảy ra không
-        if (mysqli_error($this->connection) == ""){
-            return true;
-        }else{
-            return false;
-        }
-    }
     // Hàm đăng nhập
     function loginUser($email,$password){
         // tìm kiếm dữ liệu qua email
@@ -78,7 +56,7 @@ class userModels extends ConnectDB{
         return $user;
     }
     // Cập nhập dữ liệu
-    function updateOne($id, $name, $email, $phone_number, $gender, $avatar, $address){
+    function updateOne($id, $name, $email, $phone_number, $gender,  $address){
         // Câu truy vấn
         $sql = "UPDATE
                     `user`
@@ -87,7 +65,6 @@ class userModels extends ConnectDB{
                     `email` = '$email',
                     `phone_number` = '$phone_number',
                     `gender` = '$gender',
-                    `avatar` = '$avatar',
                     `address` = '$address'
                 WHERE
                     `id` = '$id'";
@@ -98,5 +75,22 @@ class userModels extends ConnectDB{
         }else{
             return false;
         }
+    }
+
+    function updateAvatar($id, $avatar){
+        // Câu truy vấn
+            $sql = "UPDATE
+                        `user`
+                    SET
+                        `avatar` = '$avatar'
+                    WHERE
+                        `id` = '$id'";
+            // Thực hiện truy vấn và kiểm tra
+            mysqli_query($this->connection,$sql);
+            if (mysqli_error($this->connection) == ""){
+                return true;
+            }else{
+                return false;
+            }
     }
 }

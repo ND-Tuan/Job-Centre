@@ -1,267 +1,181 @@
+<?php
+class recruitment extends Controllers{
+    //hiển thị danh sách công việc
+    public function jobs_list(){
+        $search = "";
+        if (isset($_GET['search'])){
+            $search = $_GET['search'];
+        }
+        $model = $this->model('recruitmentModels');
+        $jobs = $model->selectValues($search, 0);
+        $model=$this->model('careerModels');
+        $career = $model->getAllValues();
+        $this->view("employer","employer/viewJobs","Việc tìm người",[$search, $jobs, $career]);
+    }
 
-.main-container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh
-}
+    public function job_detail($route = []){
+        $customer_id = "";
+        if(isset($_SESSION['lever']) && $_SESSION['lever'] == 3){
+            $customer_id = $_SESSION['id'];
+        }
 
+        $model = $this->model('recruitmentModels');
+        $job = $model->selectByID($route[0]);
+        
+        $count = $model->countApplication($route[0], $customer_id);
 
-.main-container .form{
-    width: 60%;
-    padding: 50px 30px;
-    background-color: #ffffff;
-    margin-bottom: 40px;
-}
+        $model=$this->model('careerModels');
+        $career = $model->getAllValues();
 
-.main-container .content{
-    width: 70%;
-}
+        $this->view("employer","employer/jobDetail",$job["job_name"],[$job, $career, $count]);
+    }
 
-.container{
-    display: grid;
-    grid-template-columns: 28% 2% 70%;
-}
+    public function company_detail($route = []){
+        $model = $this->model('employerModels');
+        $company = $model->selectOne("id",$route[0]);
+        $model      = $this->model('recruitmentModels');
+        $recruitment       = $model->selectByEmployerId($route[0]);
+        $this->view("employer","employer/viewCompany",$company["name"],[$company, $recruitment]);
+    }
 
-.container2{
-    display: grid;
-    grid-template-columns: 32% 2% 32% 2% 32%;
-}
+    public function create_recruitment(){
 
-.container3{
-    display: grid;
-    grid-template-columns: 49% 2% 49%;
-    border-radius: 3px;
-}
+        $actual_link = $this->getUrl();
+        if(isset($_SESSION['lever']) && $_SESSION['lever'] == 2){
+            $model=$this->model('careerModels');
+            $career = $model->getAllValues();
+            $this->view("employer","employer/recruitment","Đăng tin tuyển dụng",$career);
+        } else {
+            $_SESSION['error'] = "Vui lòng đăng nhập!";
+            header("Location: $actual_link/employer/login");
+        }
+     
+    }
 
-.container4{
-    display: grid;
-    grid-template-columns: 16% 63% 21%;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 20px 35px ;
-    border-radius: 5px;
-    box-shadow: 0 0 3px 0 #d1d1d1;
-    margin-bottom: 15px;
-}
+    public function search_jobs(){
 
-.container5{
-    background-color: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0 0 3px 0 #d1d1d1;
-    padding: 20px 35px ;
-}
+        $search = "";
+        // Dữ Liệu gửi lên
+        $career_id     = addslashes($_POST['career']);
+        $job_name          = addslashes($_POST['job-name']);
+        $type       = addslashes($_POST['type']);
+        $gender         = addslashes($_POST['gender']);
+        $exp          = addslashes($_POST['exp']);
+        $wage        = addslashes($_POST['wage']);
+        $address       = addslashes($_POST['job-address']);
 
-.container5 .title{
-    border-left: 7px solid #ff4646;
-    color: #333;
-    font-size: 22px;
-    font-weight: 700;
-    margin: 0 0 16px;
-    padding-left: 12px;
-}
+        // Gọi model
+        $model          = $this->model("recruitmentModels");
+        $jobs = $model->find($career_id, $job_name, $type,  $gender,  $exp, $wage, $address);
 
-.container5 .main-box{
-    display: grid;
-    grid-template-columns: 60% 1% 39%;
-}
+        $model=$this->model('careerModels');
+        $career = $model->getAllValues();
 
-.container5 .main-box .box{
-    background: #cbcbcb5c;
-    border-radius: 3px;
-    margin-bottom: 8px;
-    padding: 16px 16px ;
-}
+        $this->view("user","user/viewJobs","Việc tìm người",[$search, $jobs, $career]);
+    }
 
-.container5 .main-box .box .box-title{
-    color: #333;
-    font-weight: 700;
-    text-decoration-line: underline;
-}
+    // xử lý đăng tin
+    public function create_processing(){
+        // Dữ Liệu gửi lên
+        $user_id        = $_SESSION['id'];
+        $career_id     = addslashes($_POST['career_id']);
+        $job_name          = addslashes($_POST['job_name']);
+        $type       = addslashes($_POST['type']);
+        $num       = addslashes($_POST['num']);
+        $gender         = addslashes($_POST['gender']);
+        $position   = addslashes($_POST['position']);
+        $exp          = addslashes($_POST['exp']);
+        $wage        = addslashes($_POST['wage']);
+        $deadline        = addslashes($_POST['deadline']);
+        $address       = addslashes($_POST['address']);
+        $description    = addslashes($_POST['description']);
+        $request        = addslashes($_POST['request']);
+        $interest       = addslashes($_POST['interest']);
 
+        // Gọi model
+        $model          = $this->model("recruitmentModels");
+        $actual_link = $this->getUrl();
+        // Lưu dữ liệu và kiểm tra
+        if($model->createValues($user_id, $career_id, $job_name, $type, $num, $gender, $position, $exp, $wage, $deadline, $address, $description, $request, $interest)){
+            header("Location: $actual_link/recruitment/jobs_list");
+        }else{
+            header("Location: $actual_link/recruitment/create_recruitment");
+        }
+    }
 
-.container5 .main-box .box .box-infor{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    padding-top: 16px;
-}
+    //cập nhận tin tuyển dụng    
+    public function update($route = []){
+        // Dữ Liệu gửi lên
+        $id        = $route[0];
+        $career_id     = addslashes($_POST['career_id']);
+        $job_name          = addslashes($_POST['job_name']);
+        $type       = addslashes($_POST['type']);
+        $num       = addslashes($_POST['num']);
+        $gender         = addslashes($_POST['gender']);
+        $position   = addslashes($_POST['position']);
+        $exp          = addslashes($_POST['exp']);
+        $wage        = addslashes($_POST['wage']);
+        $deadline        = addslashes($_POST['deadline']);
+        $address       = addslashes($_POST['address']);
+        $description    = addslashes($_POST['description']);
+        $request        = addslashes($_POST['request']);
+        $interest       = addslashes($_POST['interest']);
 
-.container5 .main-box .box .box-infor .box-item{
-    display: grid;
-    grid-template-columns: 17% 83%;
-    margin-bottom: 16px;
-    align-items: center;
-}
+        // Gọi model
+        $model          = $this->model("recruitmentModels");
+        // Lưu dữ liệu và kiểm tra
+        $model->update($id, $career_id, $job_name, $type, $num, $gender, $position, $exp, $wage, $deadline, $address, $description, $request, $interest);
+        $this ->job_detail([$id]); 
+    }
 
+    //gỡ tin đăng tuyển
+    public function job_delete($route = []){
+        $model          = $this->model("recruitmentModels");
+        $model -> job_delete($route[0]);
 
+        $this ->my_recruitment();
+    }
 
-.recruitment-box{
-    box-shadow: 0 0 2px 0 #bebebe;
-    border-radius: 5px;
-    background-color: #f6f6f6;
-    margin-bottom: 15px;
-    border: 1px solid #dbdada;
-}
+    //ứng tuyển
+    public function apply($route=[]){
+        $actual_link = $this->getUrl();
+        if(isset($_SESSION['lever']) && $_SESSION['lever'] == 3){
+            
+            $job_id = $route[0];
+            $customer_id = $_SESSION['id'];
 
-.myRecruitment{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 10px 30px ;
-    border-radius: 5px;
-    border: 2px solid #ff9898;
-    
-    line-height: 25px;
-}
+            $model    = $this->model("recruitmentModels");
+            $model -> apply($job_id, $customer_id);
+            $this ->job_detail([$job_id]); 
+        } else {
+            $_SESSION['error'] = "Bạn cần đăng nhập tài khoản người tìm việc để ứng tuyển";
+            header("Location: $actual_link/customer/login");
+        }
+    }
 
-.application-box{
-    display: grid;
-    grid-template-columns: 50% 50%; 
-    padding: 10px;
-}
+     //hủy ứng tuyển
+     public function cancelApply($route = []){
+        $model = $this->model('recruitmentModels');
+        $model -> cancelApplication($_SESSION['id'], $route[0]);
 
-.application{
-    border: 1px solid #c0c0c0;
-    border-radius: 4px;
-    padding: 10px;
-    margin: 4px;
-    background-color: #ffffff;
-}
+        $job_id = $route[0];
+        $this ->job_detail([$job_id]); 
+    }
 
-.application-info{
-    display: flex;
-    justify-content: space-between;
-}
+    public function apply_delete($route = []){
+        $model          = $this->model("recruitmentModels");
+        $model -> cancelApplication($route[0], $route[1]);
 
-.fa-2xl{
-    font-size: 1.7em;
-    line-height: normal;
-    vertical-align: -18.1875em;
-}
+        $this ->my_recruitment();
+    }
 
-h3{
-    margin: 15px 0px 0px;
-}
+    public function my_recruitment(){
 
-.textarea-info{
-    background: #cbcbcb00;
-    height: 100%;
-    width: 100%;
-    resize: none;
-    padding-top: 10px;
-    line-height: 30px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #000000;
-    min-height: 150px;
-}
+        $model          = $this->model('recruitmentModels');
+        $jobs           = $model->selectByEmployerId($_SESSION['id']);
+        $applications   = $model->selectApplication($_SESSION['id'], null);
 
-.address-info{
-    background: #cbcbcb00;
-    height: 230px;
-    width: 100%;
-    resize: none;
-    padding-top: 10px;
-    line-height: 30px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #000000;
-}
+        $this->view("employer","employer/myRecruitment","Tin tuyển dụng của công ty",[$jobs, $applications]);
+    }
 
-.avatar{ 
-    position: relative;
-    width: 120px;
-    height: 120px;
-}
-
-.avatar img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 5px;
-}
-
-.job-title{
-    color: #ff2929;
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 20px;
-    padding-top: 10px;
-    line-height: 29px;
-}
-
-.company-name{
-    color: #414141;
-    line-height: 22px;
-    padding: 12px 0px 8px;
-    font: italic  bold  20px "Fira Sans", system-ui;
-}
-
-.btn-apply{
-    font-size: 14px;
-    padding: 9px 20px;
-    background-color: #ff2929;
-    color: #fff;
-    display: inline-block;
-    line-height: 1.42857143;
-    text-align: center;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    margin-left: 20px;
-    min-width: 141px;
-}
-
-.input-value{
-    padding-top: 10px;
-    margin-bottom: 10px;
-}
-.input-value .name-title{
-    font-size: 16px;
-    color: #000000;
-    font-weight: bold;
-    padding: 5px 0px;
-}
-.input-value input{
-    width: 100%;
-    border-bottom: 1px solid #dedede;
-    font-size: 17px;
-    padding: 8px 10px;
-}
-
-.select-input{
-    display: block;
-    width: 100%;
-    border: 1px solid #dbdbdb;
-    font-size: 17px;
-    padding: 8px 10px;
-}
-
-.input-value textarea{
-    width: 100%;
-    font-size: 17px;
-    border: 1px solid #dedede;
-    padding: 10px;
-    resize: vertical;
-    height: 120px;
-}
-
-.input-value button {
-    width: 100%;
-    padding: 10px 10px;
-    font-size: 17px;
-    font-weight: 600;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #DD3332;
-    color: white;
-}
-.input-value button:hover{
-    background-color: #ff4646;
-}
-
-.hidden {
-    display: none;
 }

@@ -1,0 +1,37 @@
+.main {
+    background-color: #ccc;
+    height: 100vh;
+    position: relative;
+}
+
+.main .change-pass-box{
+    margin: 0 auto;
+    max-width: 30rem;
+    transform: translateY(20%);
+    border-radius: 5px;
+    padding: 32px 30px;
+    background-color: #fff;
+    line-height: 1.5;
+    box-shadow: 0 0 8px var(--dark);
+    align-items: center;
+}
+
+.main .change-pass-box .key{
+    outline: 1px solid #ccc;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.main .change-pass-box i {
+    padding: 7px;
+    border-radius: 8px;
+    background-color: #ccc;
+}
+
+.main .change-pass-box input{
+    width: 100%;
+    padding: 5px 10px;
+}

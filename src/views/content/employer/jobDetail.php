@@ -20,7 +20,7 @@
                     <?php if( $_SESSION['lever'] == 2 && $_SESSION['id']==$data[0]['employer_id']) { ?>
                         <button onclick="changeView()" class="btn-apply"><i class="fas fa-edit"></i> &nbsp; CHỈNH SỬA</a>
                     <?php } elseif ($_SESSION['lever'] == 3 && $data[2] != 0 ) {?>
-                        <a id="cancel" class="btn-apply" href="<?php echo $actual_link ?>/recruitment/cancelApply/<?php echo $data[0]['ID'] ?>"><i class="fa-solid fa-xmark"></i> &nbsp; HỦY ỨNG TUYỂN</a>
+                        <a  onclick=" return confirm('Yêu cầu ứng tuyển này của bạn sẽ được hủy ?');" class="btn-apply" href="<?php echo $actual_link ?>/recruitment/cancelApply/<?php echo $data[0]['ID'] ?>"><i class="fa-solid fa-xmark"></i> &nbsp; HỦY ỨNG TUYỂN</a>
                     <?php } else { ?>
                         <a id="apply" class="btn-apply" href="<?php echo $actual_link ?>/recruitment/apply/<?php echo $data[0]['ID'] ?>"><i class="fa-regular fa-paper-plane" ></i> &nbsp; ỨNG TUYỂN NGAY</a>
                     <?php } ?>
@@ -29,6 +29,23 @@
                 <?php } ?>
             </div>
         </div>
+
+        <h3 style="padding-bottom: 20px;"> 
+            <?php
+                if (isset($_SESSION['done'])){
+                    echo "<p style='color: red;'>".$_SESSION['done']."</p>";
+                    unset($_SESSION['done']);
+                } else {
+            ?>
+                Nếu thấy tin tuyển dụng này có dấu hiệu lừa đảo hãy báo cáo 
+                <a  
+                    onclick=" return confirm('Bạn muốn báo cáo đơn tuyển dụng này ?');" 
+                    href="<?php echo $actual_link ?>/recruitment/report/<?php echo $data[0]['ID'] ?>" 
+                    style="color: red;">
+                        TẠI ĐÂY.
+                </a>      
+            <?php } ?>
+        </h3>
 
         <div class="container5">
             <h2 class="title">Chi tiết tin tuyển dụng</h2>
@@ -103,7 +120,6 @@
             <h3>Quyền lợi</h3>
             <textarea disabled="disabled" class="textarea-info" id="info"><?php echo $data[0]['interest']?></textarea>
         </div>
-
     </div>
 
     <form id="box-edit" class="form hidden"  method="post" action="<?php echo $actual_link ?>/recruitment/update/<?php echo $data[0]['ID']?>">
@@ -260,10 +276,6 @@
 
     document.getElementById('apply').onclick = function(){
         alert("Hồ sơ của bạn sẽ được chuyển đến cho nhà tuyển dụng.\nVui lòng đợi thông báo từ nhà tuyển dụng!");
-    }
-
-    document.getElementById('cancel').onclick = function(){
-        alert("Yêu cầu ứng tuyển này của bạn đã được hủy!");
     }
 
 </script>

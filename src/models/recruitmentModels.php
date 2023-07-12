@@ -70,8 +70,8 @@ class recruitmentModels extends ConnectDB{
             '$interest',
             '$deadline'
         )";
-        
         mysqli_query($this->connection,$sql);
+        
         if (mysqli_error($this->connection) == ""){
             return true;
         }else{
@@ -174,8 +174,6 @@ class recruitmentModels extends ConnectDB{
         $job_sql = "UPDATE `jobs_list` SET `num-of-apply` = '$count' WHERE `ID` = '$job_id'" ;
         mysqli_query($this->connection,$job_sql);
 
-        echo $job_sql;
-
         if (mysqli_error($this->connection) == ""){
             return true;
         }else{
@@ -221,6 +219,36 @@ class recruitmentModels extends ConnectDB{
         $job_sql = "UPDATE `jobs_list` SET `num-of-apply` = '$count' WHERE `ID` = '$job_id'" ;
         mysqli_query($this->connection,$job_sql);
 
+        if (mysqli_error($this->connection) == ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function report($id){
+        $sql="DELETE FROM `report` WHERE `job_id` = '$id'";
+        mysqli_query($this->connection,$sql);
+
+        $sql = "INSERT INTO `report`(`job_id`) VALUES ('$id')";
+        mysqli_query($this->connection,$sql);
+
+    }
+
+    function selectReport(){
+        $sql = "SELECT `report`.*, `jobs_list`.*, `career`.`career_name`, `employer`.* 
+                FROM ((`jobs_list` INNER JOIN `career` ON `jobs_list`.`career_id` = `career`.`id`) 
+                INNER JOIN `employer` ON `employer`.`id` = `jobs_list`.`employer_id`)
+                INNER JOIN `report` ON `report`.`job_id`=`jobs_list`.`ID` ORDER BY `report`.`create_at`ASC ";
+
+        $job = mysqli_query($this->connection,$sql);
+        return $job;
+            
+    }
+
+    function reportDelete($id){
+        $sql="DELETE FROM `report` WHERE `job_id` = '$id'";
+        mysqli_query($this->connection,$sql);
         if (mysqli_error($this->connection) == ""){
             return true;
         }else{

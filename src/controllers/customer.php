@@ -1,7 +1,5 @@
-
-<?php
+<?php 
 class customer extends Controllers{
-  
     // Kiểm tra đăng nhập
     public function checkLogin(){
         // Kiểm tra xem trong session có tồn tại phiên đăng nhập không
@@ -23,6 +21,27 @@ class customer extends Controllers{
         $this->view("customer","customer/register","Đăng kí",[]);
     }
 
+    // hiển thị tài khoản của tôi
+    public function my_account(){
+        if ($this->checkLogin() == false){
+            $actual_link = $this->getUrl();
+            // Nếu chưa đăng nhập thì render về trang đăng nhập
+            header("Location: $actual_link/customer/login");
+        }
+        // gọi model của customer
+        $model = $this->model('customerModels');
+        // Tìm Kiếm dữ liệu từ id được lưu ở SESSION
+        $myAccount = $model->selectOne('id',$_SESSION['id']);
+        $myEdu = $model->selectEdu($_SESSION['id']);
+        $myExp = $model->selectExp($_SESSION['id']);
+        $mySkill = $model->selectSkill($_SESSION['id']);
+
+        $model=$this->model('careerModels');
+        $career = $model->getAllValues();
+
+        // Hiển thi
+        $this->view("customer","customer/myAccount","Tài khoản của tôi",[$myAccount, $myEdu, $myExp, $mySkill, $career]);
+    }
     // Hiên Thị đổi mật khẩu
     public function change_password(){
         if ($this->checkLogin() == false){
@@ -44,7 +63,7 @@ class customer extends Controllers{
         // Gọi model
         $save = $this->model("customerModels");
         $actual_link = $this->getUrl();
-
+        
         // Kiểm tra mật khẩu
         if ($save->ChangePass($password,$secure_pass)){
             $_SESSION['done'] = "Đổi mk thành công";
@@ -60,7 +79,7 @@ class customer extends Controllers{
         // Nhận dữ liệu gửi lên
         $email = addslashes($_POST['email']);
         $password = addslashes($_POST['password']);
-
+        
         // Gọi model
         $login = $this->model("customerModels");
         $actual_link = $this->getUrl();
@@ -80,51 +99,7 @@ class customer extends Controllers{
         $actual_link = $this->getUrl();;
         header("Location: $actual_link/home");
     }
-
-    public function register_processing(){
-        // Nhận dữ liệu gửi lên
-        $name = addslashes($_POST["name"]);
-        $email = addslashes($_POST['email']);
-        $password = addslashes($_POST['password']);
-
-        // Mã hóa mật khẩu
-        $secure_pass = password_hash($password, PASSWORD_BCRYPT);
-
-        // Gọi model
-        $save = $this->model("customerModels");
-        $actual_link = $this->getUrl();
-
-        // Gọi hàm Tạo tài khoản và kiểm tra
-        if ($save->CreateCustomer($name,$email,$secure_pass)){
-            $_SESSION['success'] = "Đăng kí tài khoản thành công, vui lòng đăng nhập";
-            header("Location: $actual_link/customer/login");
-        }else{
-            $_SESSION['error'] = "Email này đã được sử dụng, vui lòng đăng kí lại";
-            header("Location: $actual_link/customer/register");
-        }
-    }
-  
-    public function my_account(){
-        if ($this->checkLogin() == false){
-            $actual_link = $this->getUrl();
-            // Nếu chưa đăng nhập thì render về trang đăng nhập
-            header("Location: $actual_link/customer/login");
-        }
-        // gọi model của customer
-        $model = $this->model('customerModels');
-        // Tìm Kiếm dữ liệu từ id được lưu ở SESSION
-        $myAccount = $model->selectOne('id',$_SESSION['id']);
-        $myEdu = $model->selectEdu($_SESSION['id']);
-        $myExp = $model->selectExp($_SESSION['id']);
-        $mySkill = $model->selectSkill($_SESSION['id']);
-
-        $model=$this->model('careerModels');
-        $career = $model->getAllValues();
-
-        // Hiển thi
-        $this->view("customer","customer/myAccount","Tài khoản của tôi",[$myAccount, $myEdu, $myExp, $mySkill, $career]);
-    }
-
+    // Sử lý cập nhập tài khoản
     public function update(){  
         // Nhận dữ liệu gửi lên
         $name           = addslashes($_POST['name']);
@@ -171,11 +146,41 @@ class customer extends Controllers{
         header("Location: $actual_link/customer/my_account");
     }
 
+    public function register_processing(){
+        // Nhận dữ liệu gửi lên
+        $name = addslashes($_POST["name"]);
+        $email = addslashes($_POST['email']);
+        $password = addslashes($_POST['password']);
+
+        // Mã hóa mật khẩu
+        $secure_pass = password_hash($password, PASSWORD_BCRYPT);
+
+        // Gọi model
+        $save = $this->model("customerModels");
+        $actual_link = $this->getUrl();
+        
+        // Gọi hàm Tạo tài khoản và kiểm tra
+        if ($save->CreateCustomer($name,$email,$secure_pass)){
+            $_SESSION['success'] = "Đăng kí tài khoản thành công, vui lòng đăng nhập";
+            header("Location: $actual_link/customer/login");
+        }else{
+            $_SESSION['error'] = "Email này đã được sử dụng, vui lòng đăng kí lại";
+            header("Location: $actual_link/customer/register");
+        }
+    }
+
+    //thêm học vấn
     public function add_edu(){  
         // Nhận dữ liệu gửi lên
         $school           = addslashes($_POST['school']);
         $major          = addslashes($_POST['major']);
-        $graduatedOrNot          = addslashes($_POST['graduatedOrNot']);
+
+        if (isset($_POST['graduatedOrNot'])){
+            $graduatedOrNot  = addslashes($_POST['graduatedOrNot']);
+        } else {
+            $graduatedOrNot  = 0;
+        }
+        
         $eduStart             = addslashes($_POST['eduStart']);
         $eduEnd               = addslashes($_POST['eduEnd']);
         $edu_description   = addslashes($_POST['edu-description']);
@@ -200,7 +205,13 @@ class customer extends Controllers{
         // Nhận dữ liệu gửi lên
         $company           = addslashes($_POST['company']);
         $position          = addslashes($_POST['position']);
-        $endOrNot          = addslashes($_POST['endOrNot']);
+
+        if (isset($_POST['endOrNot'])){
+            $endOrNot          = addslashes($_POST['endOrNot']);
+        } else {
+            $endOrNot          = 0;
+        }
+        
         $start             = addslashes($_POST['start']);
         $end               = addslashes($_POST['end']);
         $exp_description   = addslashes($_POST['exp-description']);
@@ -241,8 +252,8 @@ class customer extends Controllers{
         $model ->deleteSkill($route[0]);
         header("Location: $actual_link/customer/my_account#addSkill");
     }
-  
-   //mong muốn việc làm
+
+    //mong muốn việc làm
     public function job_looking(){
         $career           = addslashes($_POST['career']);
         $job_name          = addslashes($_POST['job_name']);

@@ -109,3 +109,83 @@ class customerModels extends ConnectDB{
         mysqli_query($this->connection,$sql);
     }
 }
+
+    function selectExp($id){
+        $sql = "SELECT * FROM `customer-exp` WHERE `custumer_id` = '$id'";
+        $exp = mysqli_query($this->connection,$sql);
+        return $exp;
+    }
+
+    //thêm kinh nghiệm
+    function updateExp($id, $company, $position, $endOrNot, $start, $end, $exp_description){
+        // Câu truy vấn
+        $sql = "INSERT INTO `customer-exp`(
+                    `custumer_id`, 
+                    `company-name`, 
+                    `position`, 
+                    `end_or_not`, 
+                    `start_at`, 
+                    `end_at`, 
+                    `exp-description`
+                ) 
+                VALUES (
+                    '$id',
+                    '$company',
+                    '$position',
+                    '$endOrNot',
+                    '$start',
+                    '$end',
+                    '$exp_description'
+                )";
+        // Thực hiện truy vẫn
+        mysqli_query($this->connection,$sql);
+        // Kiểm tra xem có lỗi xảy ra không
+        if (mysqli_error($this->connection) == ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //xóa kinh nghiệm
+    function deleteExp($id){
+        $sql = "DELETE FROM `customer-exp` WHERE `id` = '$id'";
+        mysqli_query($this->connection,$sql);
+    }
+
+    function selectSkill($id){
+        $sql = "SELECT * FROM `customer-skill` WHERE `customer_id` = '$id'";
+        $skill = mysqli_query($this->connection,$sql);
+        return $skill;
+    }
+
+    //thêm kĩ năng
+    function updateSkill($id, $skill, $rate, $skill_description){
+        // Câu truy vấn
+        $sql = "INSERT INTO `customer-skill`(
+                    `customer_id`, 
+                    `skill`, 
+                    `rate`, 
+                    `skill-description`
+                )
+                VALUES (
+                    '$id',
+                    '$skill',
+                    '$rate',
+                    '$skill_description'
+                )";
+        // Thực hiện truy vẫn
+        mysqli_query($this->connection,$sql);
+        // Kiểm tra xem có lỗi xảy ra không
+        if (mysqli_error($this->connection) == ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //xóa kĩ năng
+    function deleteSkill($id){
+        $sql = "DELETE FROM `customer-skill` WHERE `id` = '$id'";
+        mysqli_query($this->connection,$sql);
+    }

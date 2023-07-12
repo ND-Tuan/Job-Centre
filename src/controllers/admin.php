@@ -28,18 +28,13 @@ class admin extends Controllers{
         // Tìm Kiếm dữ liệu từ id được lưu ở SESSION
         $myAccount = $model->selectOne('id',$_SESSION['id']);
         // Hiển thi
-        $this->view("user","user/myAccount","Tài khoản của tôi",[
-            'email'         => $myAccount['email'],
-            'phone_number'  => $myAccount['phone_number'],
-            'gender'        => $myAccount['gender'],
-            'address'       => $myAccount['address'],
-        ]);
+        $this->view("user","user/myAccount","Tài khoản của tôi",[$myAccount]);
     }
     // Hiên Thị đổi mật khẩu
     public function change_password(){
         if ($this->checkLogin() == false){
             $actual_link = $this->getUrl();
-            header("Location: $actual_link/admin/login");
+            header("Location: $actual_link/home/read");
         }else{
             $this->view("user","editPassword","Đổi mật khẩu",[]);
         }
@@ -100,9 +95,27 @@ class admin extends Controllers{
         $phone_number   = addslashes($_POST['phone_number']);
         $gender         = addslashes($_POST['gender']);
         $address        = addslashes($_POST['address']);
-        $avatar         = $_SESSION['avatar'];
 
         // Xử lý file gửi lên
+       
+        // Gọi model
+        $save = $this->model("userModels");
+        $actual_link = $this->getUrl();;
+        // Lưu giá trị
+        if ($save->updateOne($_SESSION['id'], $name, $email, $phone_number, $gender, $address)){
+            // Cập nhập lại session
+            $_SESSION['name']   = $name;
+            $_SESSION['done'] = "Thay Đổi thông tin thành công!";
+            header("Location: $actual_link/admin/my_account");
+        }else{
+            $_SESSION['error'] = "Lỗi Trùng email!";
+            header("Location: $actual_link/admin/my_account");
+        }
+    }
+
+    public function updateAvatar(){
+        $name           = $_SESSION['name'];
+        $avatar         = $_SESSION['avatar'];
         $file = basename($_FILES["avatar"]["name"]);
         // Kiểm tra xem tên có rỗng không
         if ($file != ""){
@@ -112,22 +125,36 @@ class admin extends Controllers{
             $avatar = $name . $date->getTimestamp() . "." . strtolower(pathinfo($file,PATHINFO_EXTENSION));
             $target_file = $target_file . "/" . $avatar;
             // Lưu file
-            move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file);   
-        }
-        // Gọi model
+            move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file); 
+        }  
+        $actual_link = $this->getUrl();
         $save = $this->model("userModels");
-        $actual_link = $this->getUrl();;
-        // Lưu giá trị
-        if ($save->updateOne($_SESSION['id'], $name, $email, $phone_number, $gender, $avatar, $address)){
-            // Cập nhập lại session
-            $_SESSION['name']   = $name;
-            $_SESSION['avatar'] = $avatar;
-            $_SESSION['done'] = "Thay Đổi thông tin thành công!";
-            header("Location: $actual_link/admin/my_account");
-        }else{
-            $_SESSION['error'] = "Lỗi Trùng email!";
-            header("Location: $actual_link/admin/my_account");
+        $save->updateAvatar($_SESSION['id'], $avatar);
+        $_SESSION['avatar'] = $avatar;
+        header("Location: $actual_link/admin/my_account");
+    }
+
+    public function recruitment_manager($route = []){
+        $search = "";
+        if (isset($_GET['search'])){
+            $search = $_GET['search'];
         }
+        $model = $this->model('recruitmentModels');
+        $jobs = $model->selectValues($search, 0);
+        $this->view("user","user/recruitment_manager","Quản lý tin tuyển dụng",[$search, $jobs]);
+    }
+
+    public function report_manager(){
+        $model = $this->model('recruitmentModels');
+        $jobs = $model->selectReport();
+        $this->view("user","user/report_manager","Xử lý báo cáo",[$jobs]);
+    }
+
+    public function report_delete($route = []){
+        $model = $this->model('recruitmentModels');
+        $model->reportDelete($route[0]);
+        $jobs = $model->selectReport();
+        $this->view("user","user/report_manager","Xử lý báo cáo",[$jobs]);
     }
     
 }

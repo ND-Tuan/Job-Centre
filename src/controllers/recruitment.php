@@ -178,4 +178,13 @@ class recruitment extends Controllers{
         $this->view("employer","employer/myRecruitment","Tin tuyển dụng của công ty",[$jobs, $applications]);
     }
 
+    public function report($route = []){
+        $model = $this->model("recruitmentModels");
+        $model->report($route[0]);
+        $job_id = $route[0];
+
+        $_SESSION['done'] = "Bạn đã báo cáo tin tuyển dụng này. Báo cáo của bạn sẽ được chúng tôi xử lý trong khoảng thời gian sớm nhất.";
+        $this ->job_detail([$job_id]); 
+    }
+
 }
